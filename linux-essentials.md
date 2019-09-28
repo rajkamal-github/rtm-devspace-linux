@@ -329,3 +329,41 @@ rm -r <directory_name> # to recursively delete all its contents
 
 ## tar
 Bundle files into a single file.
+
+
+EXAMPLES
+       tar -cf archive.tar foo bar
+              # Create archive.tar from files foo and bar.
+
+       tar -tvf archive.tar
+              # List all files in archive.tar verbosely.
+
+       tar -xf archive.tar
+              # Extract all files from archive.tar.
+
+
+```
+[rajkamal@localhost ~]$ ls
+bin  Desktop  development  development.tar  Documents  Downloads  help.txt  Music  node_modules  Pictures  Public  Templates  Videos
+[rajkamal@localhost ~]$ touch Documents/file1.txt
+[rajkamal@localhost ~]$ touch Documents/file2.txt
+[rajkamal@localhost ~]$ touch Documents/file3.pdf
+[rajkamal@localhost ~]$ touch Documents/file4.doc
+[rajkamal@localhost ~]$ touch Documents/file5.xls
+[rajkamal@localhost ~]$ touch Documents/file6.xml
+[rajkamal@localhost ~]$ touch Documents/file7.json
+[rajkamal@localhost ~]$ ls Documents/
+file1.txt  file2.txt  file3.pdf  file4.doc  file5.xls  file6.xml  file7.json
+[rajkamal@localhost ~]$ tar -cf archive-documents.tar Documents
+[rajkamal@localhost ~]$ ls
+archive-documents.tar  bin  Desktop  development  development.tar  Documents  Downloads  help.txt  Music  node_modules  Pictures  Public  Templates  Videos
+[rajkamal@localhost ~]$ mkdir tar-demo
+[rajkamal@localhost ~]$ mv archive-documents.tar tar-demo/
+[rajkamal@localhost ~]$ cd tar-demo/
+[rajkamal@localhost tar-demo]$ tar -xf archive-documents.tar 
+[rajkamal@localhost tar-demo]$ ls
+archive-documents.tar  Documents
+[rajkamal@localhost tar-demo]$ ls Documents/
+file1.txt  file2.txt  file3.pdf  file4.doc  file5.xls  file6.xml  file7.json
+
+```
