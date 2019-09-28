@@ -333,11 +333,14 @@ Bundle files into a single file.
 EXAMPLES
 
 ```
-tar -cf archive.tar foo bar # Create archive.tar from files foo and bar.
+# Create archive.tar from files foo and bar.
+tar -cf archive.tar foo bar 
 
-tar -tvf archive.tar # List all files in archive.tar verbosely.
+# List all files in archive.tar verbosely.
+tar -tvf archive.tar 
 
-tar -xf archive.tar # Extract all files from archive.tar.
+# Extract all files from archive.tar.
+tar -xf archive.tar 
 ```
 
 ```
