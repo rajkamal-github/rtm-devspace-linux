@@ -229,3 +229,78 @@ whereis cd
 
 locate passwd	
 
+
+# Linux File System
+
+# Ref: http://www.pathname.com/fhs/
+
+## Take you to the root directory of the file system
+cd /
+
+```
+[rajkamal@localhost /]$ ls -l
+total 24
+lrwxrwxrwx.   1 root root    7 Sep 25 17:22 bin -> usr/bin  # executable programs where the regular user can run
+dr-xr-xr-x.   5 root root 4096 Sep 25 22:56 boot            # boot directory contains necessary files to get boot up. Linux kernel also resides here.
+drwxr-xr-x.  20 root root 3200 Sep 27 10:29 dev             # location where all the devices are referenced from. Hardrives, keyboards, usb devices
+drwxr-xr-x. 153 root root 8192 Sep 28 15:10 etc             # configuration files contains all system services
+drwxr-xr-x.   3 root root   22 Sep 25 17:30 home            # user accounts directory.
+lrwxrwxrwx.   1 root root    7 Sep 25 17:22 lib -> usr/lib  # lib files that contain code that gets shared out to many application in your system
+lrwxrwxrwx.   1 root root    9 Sep 25 17:22 lib64 -> usr/lib64 # same as lib for 64 bit
+drwxr-xr-x.   2 root root    6 Apr 10  2018 media           # cd , usb are mounted to
+drwxr-xr-x.   2 root root    6 Apr 10  2018 mnt             # harddrives connected to system
+drwxr-xr-x.   4 root root   49 Sep 25 22:55 opt             # optional location for application to be stored if they are not located in bin
+dr-xr-xr-x. 242 root root    0 Sep 27 10:29 proc            # Linux outputs information about running linux system. Console.log
+dr-xr-x---.   8 root root  279 Sep 27 10:47 root            # home directory for root user. Not to be confused with main root of the file system
+drwxr-xr-x.  41 root root 1260 Sep 28 15:42 run             #
+lrwxrwxrwx.   1 root root    8 Sep 25 17:22 sbin -> usr/sbin# location where sys admin tools and programs are located which is used by root user
+drwxr-xr-x.   2 root root    6 Apr 10  2018 srv             # typical use for server applications such as web server
+dr-xr-xr-x.  13 root root    0 Sep 27 10:29 sys             # contains information about the hardware that is on the system
+drwxrwxrwt.  35 root root 4096 Sep 28 15:45 tmp             # location to store temporary data
+drwxr-xr-x.  13 root root  155 Sep 25 17:22 usr             # contains own set of directory tree that closely mirrors of the root directory.
+drwxr-xr-x.  22 root root 4096 Sep 26 09:43 var             # contains files that tend to vary in size like log files, printer files and local system email files.
+```
+
+# Absolute and relative paths
+
+## absolute path
+full path to the file. Always begin with the root directory (/)
+
+```
+[rajkamal@localhost ~]$ pwd
+/home/rajkamal
+[rajkamal@localhost ~]$ 
+```
+
+relative path - relative path (doesn't start with /. Always relative to current location)
+
+```
+[rajkamal@localhost ~]$ cd ~
+[rajkamal@localhost ~]$ pwd
+/home/rajkamal
+[rajkamal@localhost ~]$ ls
+bin  Desktop  development  Documents  Downloads  help.txt  Music  node_modules  Pictures  Public  Templates  Videos
+[rajkamal@localhost ~]$ cd development/
+[rajkamal@localhost development]$ 
+```
+
+# Files and Directories
+
+```
+mkdir <directory_name>
+mkdir <dir1> <dir2> <dir3>  # creates a list of directories
+mkdir -p dir/subdir1/subdir2
+
+touch <filename.extension>
+cp <file_path> <destination_path>
+mv <file_path> <destination_path>
+cp -R <folder_path> <destination_path>  # -R flag to recursively copy all its contents
+
+rmdir <directory_name>  # for empty directory
+rm -r <directory_name> # to recursively delete all its contents
+```
+
+# Archive and compression
+
+## tar
+Bundle files into a single file
