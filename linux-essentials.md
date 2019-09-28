@@ -331,13 +331,14 @@ rm -r <directory_name> # to recursively delete all its contents
 Bundle files into a single file.
 
 EXAMPLES
-'''
+
+```
 tar -cf archive.tar foo bar # Create archive.tar from files foo and bar.
 
 tar -tvf archive.tar # List all files in archive.tar verbosely.
 
 tar -xf archive.tar # Extract all files from archive.tar.
-'''
+```
 
 ```
 [rajkamal@localhost ~]$ ls
