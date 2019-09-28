@@ -1,5 +1,6 @@
-# useful git commands
+# Git commands
 
+```
 git config --list
 
 git config --global --list
@@ -21,3 +22,16 @@ git branch
 git diff
 
 git log
+```
+
+## Storing credentials
+
+```
+git config credential.helper store
+
+git push origin master # type in credentials
+
+# several days later
+git push origin master
+
+```
