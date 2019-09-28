@@ -1,26 +1,55 @@
 # Git commands
 
+## Git config
 ```
 git config --list
 
 git config --global --list
 
 git config --local --list
+```
 
+## Git clone
+
+```
 git clone <git_clone_url>
 
-git pull
+```
 
+## Pull latest
+
+```
+git pull
+```
+
+## Branch
+
+```
 git branch <branch_name>
 
 git checkout <branch_name>
 
-git push <destination> <source_branch>
-
 git branch
 
-git diff
+```
 
+## Push updates to remote repo
+
+```
+git push origin master
+
+git push origin branch-name
+```
+
+## View difference
+
+```
+git diff
+```
+
+## View log
+
+```
 git log
 ```
 
@@ -35,3 +64,5 @@ git push origin master # type in credentials
 git push origin master
 
 ```
+
+# 
