@@ -327,7 +327,7 @@ rm -r <directory_name> # to recursively delete all its contents
 
 # Archive and compression
 
-## tar
+## Archiving using tar
 Bundle files into a single file.
 
 EXAMPLES
@@ -367,4 +367,72 @@ archive-documents.tar  Documents
 [rajkamal@localhost tar-demo]$ ls Documents/
 file1.txt  file2.txt  file3.pdf  file4.doc  file5.xls  file6.xml  file7.json
 
+```
+
+## Compression using tar
+
+### Gzip compression 
+Gzip is used for compression
+
+```
+tar -czf gzip-compression-demo.gz gzip-compresion-demo
+```
+
+### Bz2 compression
+
+```
+tar -cjf bz2-compression-demo.bz2 bz2-compresion-demo
+```
+
+### Lab
+
+```
+[rajkamal@localhost ~]$ mkdir compression
+[rajkamal@localhost ~]$ cd compression/
+[rajkamal@localhost compression]$ ls
+[rajkamal@localhost compression]$ mkdir gzip-compression-demo
+[rajkamal@localhost compression]$ touch gzip-compression-demo/file1.pdf
+[rajkamal@localhost compression]$ touch gzip-compression-demo/file2.doc
+[rajkamal@localhost compression]$ touch gzip-compression-demo/file3.doc
+[rajkamal@localhost compression]$ touch gzip-compression-demo/file4.doc
+[rajkamal@localhost compression]$ touch gzip-compression-demo/file5.doc
+[rajkamal@localhost compression]$ mkdir bz2-compression-demo
+[rajkamal@localhost compression]$ cp gzip-compression-demo/* bz2-compression-demo/
+[rajkamal@localhost compression]$ ls bz2-compression-demo/
+file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
+[rajkamal@localhost compression]$ ls gzip-compression-demo/
+file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
+[rajkamal@localhost compression]$ tar -czf gzip-compression-demo.gz gzip-compression-demo
+[rajkamal@localhost compression]$ tar -cjf bz2-compression-demo.bz2 bz2-compression-demo
+[rajkamal@localhost compression]$ ls
+bz2-compression-demo  bz2-compression-demo.bz2  gzip-compression-demo  gzip-compression-demo.gz
+[rajkamal@localhost compression]$ tar -tvf gzip-compression-demo.gz 
+drwxrwxr-x rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file1.pdf
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file2.doc
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file3.doc
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file4.doc
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file5.doc
+[rajkamal@localhost compression]$ tar -tvf bz2-compression-demo.bz2 
+drwxrwxr-x rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file1.pdf
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file2.doc
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file3.doc
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file4.doc
+-rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file5.doc
+[rajkamal@localhost compression]$ ls
+bz2-compression-demo  bz2-compression-demo.bz2  gzip-compression-demo  gzip-compression-demo.gz
+[rajkamal@localhost compression]$ rm -r bz2-compression-demo
+[rajkamal@localhost compression]$ rm -r gzip-compression-demo
+[rajkamal@localhost compression]$ ls
+bz2-compression-demo.bz2  gzip-compression-demo.gz
+[rajkamal@localhost compression]$ tar -xzf gzip-compression-demo.gz 
+[rajkamal@localhost compression]$ tar -xjf bz2-compression-demo.bz2 
+[rajkamal@localhost compression]$ ls
+bz2-compression-demo  bz2-compression-demo.bz2  gzip-compression-demo  gzip-compression-demo.gz
+[rajkamal@localhost compression]$ ls gzip-compression-demo/
+file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
+[rajkamal@localhost compression]$ ls bz2-compression-demo/
+file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
+[rajkamal@localhost compression]$ 
 ```
