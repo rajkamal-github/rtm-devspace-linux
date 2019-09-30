@@ -496,7 +496,7 @@ tail -f cloudserverlogs.txt       # shows bottom 10 lines of file by default. Bu
 
 ```
 
-## Analyzing text document from command line
+### Analyzing text document from command line
 Head get first 1 line from file
 
 ```
@@ -582,5 +582,177 @@ Treaties on Friendship and Old Age, by Marcus Tullius Cicero
   29809  255820 cicero_disputations.txt
   89427  767449 total
 [rajkamal@localhost linux-essentials]$ 
+
+```
+
+## Pipes, grep and regular expressions
+
+```
+# grep  - show the lines in a file that matches a specific pattern
+# -l = performs a case in-sensitive search
+# -v = returns the lines that doesn't contain the pattern
+# -r = performs a recursive search
+# | = pipes the output of a command to another command
+# Regular expressions
+# ^ = searches the beginning of a line
+# $ = searches the end of a line
+# . = stands in for a single character. (wild card for a single character. eg: ".[h]" pattern search for any word that has second word as h)
+# [abc] = search for a specified characters
+# [^abc] = search for any other characters than specified
+# * = Matches zero of more of the proceeding characters or expression. Eg. "Log*" search for anything starts with "Log".
+
+# Eg.
+
+# case sensitive search
+[rajkamal@localhost linux-essentials]$ grep republic cicero_disputations.txt 
+had a myth respecting its own origin; the Platonic republic may also have
+
+# case in-sensitive search
+[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt
+[rajkamal@localhost linux-essentials]$ 
+
+# Piping output of grep to commands
+
+[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt | less
+[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt | wc -w
+397
+[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt | wc -l
+36
+[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt | wc -lw
+     36     397
+[rajkamal@localhost linux-essentials]$ 
+
+# Regular expressions
+
+# Lines starting with a word republic
+[rajkamal@localhost linux-essentials]$ grep -i '^republic' cicero_disputations.txt
+
+# Lines end with a word republic
+[rajkamal@localhost linux-essentials]$ grep -i 'republic$' cicero_disputations.txt
+[rajkamal@localhost linux-essentials]$ 
+
+# Lines starting with specific characters
+[rajkamal@localhost linux-essentials]$ grep '^[AaBb]' cicero_disputations.txt
+
+# Lines doesn't start with specific characters
+[rajkamal@localhost linux-essentials]$ grep '^[^AaBb]' cicero_disputations.txt
+
+# Any word that has first unknown character (.) and second character as h
+[rajkamal@localhost linux-essentials]$ grep '.[h]' cicero_disputations.txt 
+
+# Any word starting with www
+[rajkamal@localhost linux-essentials]$ grep 'www*' cicero_disputations.txt
+
+# no star (*) would fetch the same results
+[rajkamal@localhost linux-essentials]$ grep 'www' cicero_disputations.txt 
+
+# if you are specific and enclose in a block. This would get only www and ignore wwww.
+[rajkamal@localhost linux-essentials]$ grep '\bwww\b' cicero_disputations.txt 
+
+```
+
+
+### Excercise
+- Log in to your Linux Essentials lab server.
+- Become the root account user.
+- List out the contents of the /var/log/messages log file and use pipes and the grep search utility to find anything that references DHCPREQUEST.
+- Using the last command, how would you also use pipes and the more utility to page through the multiple pages of returns?
+- How can we also use the grep and pipe utility to redirect the output data into a file called /root/file.log to then view those results?
+- Now verify that the log that you redirected to the file.log file contains your output.
+
+```
+[rajkamal@localhost linux-essentials]$ sudo grep "DHCPREQUEST" /var/log/messages 
+[sudo] password for rajkamal: 
+Sep 25 17:32:47 localhost dhclient[8555]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x1311cbb6)
+Sep 25 17:32:54 localhost dhclient[9947]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x48d266cf)
+Sep 25 17:39:17 localhost dhclient[1159]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x4cbac94d)
+Sep 25 17:42:09 localhost dhclient[1159]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x6d313c9)
+Sep 25 17:51:07 localhost dhclient[1153]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x2fb89b48)
+Sep 25 17:52:45 localhost dhclient[1159]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x311e0d41)
+Sep 25 18:00:04 localhost dhclient[1168]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x463497f1)
+Sep 25 18:04:38 localhost dhclient[3355]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x5d9e45d0)
+Sep 25 18:07:28 localhost dhclient[3453]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x56032cbc)
+Sep 25 18:12:31 localhost dhclient[3607]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x4cedf8b8)
+Sep 25 18:13:16 localhost dhclient[3655]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x4764fc1b)
+Sep 25 18:14:51 localhost dhclient[3713]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x12d858bd)
+Sep 25 18:15:19 localhost dhclient[3759]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x549f55c0)
+Sep 25 18:15:25 localhost dhclient[3790]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x48984e31)
+Sep 25 22:32:59 localhost dhclient[1162]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x3501d865)
+Sep 25 22:38:50 localhost dhclient[3282]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x44e0d5ac)
+Sep 25 22:49:04 localhost dhclient[1259]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x5e2a3432)
+Sep 26 11:34:24 localhost dhclient[1189]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x3703d934)
+Sep 26 18:14:08 localhost dhclient[11810]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x6890e2db)
+Sep 27 09:08:54 localhost dhclient[13200]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x71ee5cfc)
+Sep 27 10:29:53 localhost dhclient[1187]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x251eae37)
+Sep 27 17:58:57 localhost dhclient[19178]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0xdd6cca2)
+Sep 28 15:10:26 localhost dhclient[19246]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x22659532)
+Sep 29 22:15:05 localhost dhclient[1194]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x58057379)
+Sep 30 09:30:53 localhost dhclient[3557]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x72e9199)
+[rajkamal@localhost linux-essentials]$ sudo grep "DHCPREQUEST" /var/log/messages | less
+[rajkamal@localhost linux-essentials]$ sudo grep "DHCPREQUEST" /var/log/messages > testfile.logd
+[rajkamal@localhost linux-essentials]$ cat testfile.log 
+Sep 25 17:32:47 localhost dhclient[8555]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x1311cbb6)
+Sep 25 17:32:54 localhost dhclient[9947]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x48d266cf)
+Sep 25 17:39:17 localhost dhclient[1159]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x4cbac94d)
+Sep 25 17:42:09 localhost dhclient[1159]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x6d313c9)
+Sep 25 17:51:07 localhost dhclient[1153]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x2fb89b48)
+Sep 25 17:52:45 localhost dhclient[1159]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x311e0d41)
+Sep 25 18:00:04 localhost dhclient[1168]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x463497f1)
+Sep 25 18:04:38 localhost dhclient[3355]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x5d9e45d0)
+Sep 25 18:07:28 localhost dhclient[3453]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x56032cbc)
+Sep 25 18:12:31 localhost dhclient[3607]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x4cedf8b8)
+Sep 25 18:13:16 localhost dhclient[3655]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x4764fc1b)
+Sep 25 18:14:51 localhost dhclient[3713]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x12d858bd)
+Sep 25 18:15:19 localhost dhclient[3759]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x549f55c0)
+Sep 25 18:15:25 localhost dhclient[3790]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x48984e31)
+Sep 25 22:32:59 localhost dhclient[1162]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x3501d865)
+Sep 25 22:38:50 localhost dhclient[3282]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x44e0d5ac)
+Sep 25 22:49:04 localhost dhclient[1259]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x5e2a3432)
+Sep 26 11:34:24 localhost dhclient[1189]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x3703d934)
+Sep 26 18:14:08 localhost dhclient[11810]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x6890e2db)
+Sep 27 09:08:54 localhost dhclient[13200]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x71ee5cfc)
+Sep 27 10:29:53 localhost dhclient[1187]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x251eae37)
+Sep 27 17:58:57 localhost dhclient[19178]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0xdd6cca2)
+Sep 28 15:10:26 localhost dhclient[19246]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x22659532)
+Sep 29 22:15:05 localhost dhclient[1194]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x58057379)
+Sep 30 09:30:53 localhost dhclient[3557]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x72e9199)
+[rajkamal@localhost linux-essentials]$ 
+```
+
+## Turning commands into a Script
+
+### Text editor Nano
+nano command
+
+```
+[rajkamal@localhost linux-essentials]$ nano toaster.txt
+[rajkamal@localhost linux-essentials]$ cat toaster.txt 
+Hello Linux Pioneers
+[rajkamal@localhost linux-essentials]$ 
+
+```
+
+### Text editor vi/vim
+vim
+
+```
+# default command mode
+# i = insert mode
+# Esc = leave the mode
+# o = puts back to insert mode and puts the cursor at the end of the file
+# h = left arrow
+# j = bottom arrow
+# k = up arrow
+# l = right arrow
+# v = visual mode
+# vllll = Equivalent of highlight text
+# y = yank the highlighted text to memory buffer. Effectively does the copy.
+# p = paste the yanked text
+# u = undo
+# shift + g = go to the bottom of the file
+# esc + :w <file_name> = write file with a name to disk
+# dw = delete word
+# shift + a = append text at the end of the line
+# esc + :wq = write and exit
 
 ```
