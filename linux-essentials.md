@@ -918,7 +918,7 @@ Adding arguments
 First argument $1 
 Second argument $2
 ...
-</dpre>
+</pre>
 
 ```bash
 #!/bin/bash
