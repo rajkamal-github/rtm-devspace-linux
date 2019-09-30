@@ -959,6 +959,8 @@ This is line three
 
 # Linux Operating System
 
+## CPU
+
 <pre>
   > To check CPU Info of an opearting system, run cat /proc/cpuinfo
 </pre>
@@ -969,4 +971,113 @@ cat /proc/cpuinfo
 ```
 
 
+## RAM
+<pre>
+To check memory utilization, use free command
+</pre>
 
+```
+[rajkamal@localhost rtm-devspace-documentation]$ free
+              total        used        free      shared  buff/cache   available
+Mem:        5944700     2152484     1780100      165280     2012116     3331136
+Swap:       2097148           0     2097148
+[rajkamal@localhost rtm-devspace-documentation]$ free -m
+              total        used        free      shared  buff/cache   available
+Mem:           5805        2102        1737         161        1964        3252
+Swap:          2047           0        2047
+[rajkamal@localhost rtm-devspace-documentation]$ free -g
+              total        used        free      shared  buff/cache   available
+Mem:              5           2           1           0           1           3
+Swap:             1           0           1
+
+```
+
+## Mother board
+
+BIOS Chipset - Chip that contains firmware twhich process events such as keyboard strokes and so on.
+
+```
+[rajkamal@localhost rtm-devspace-documentation]$ sudo dmidecode
+
+```
+
+## Power Supply
+
+Powersupply provide enough watts to the computer to power each components.
+
+
+## Hard disk
+
+Persistent information. Magnetic disk or Solid state drives
+
+Partitioning such fdisk would provide logical partition.
+
+```
+[rajkamal@localhost rtm-devspace-documentation]$ fdisk -l
+fdisk: cannot open /dev/sda: Permission denied
+fdisk: cannot open /dev/mapper/centos-root: Permission denied
+fdisk: cannot open /dev/mapper/centos-swap: Permission denied
+[rajkamal@localhost rtm-devspace-documentation]$ sudo fdisk -l
+
+Disk /dev/sda: 21.5 GB, 21474836480 bytes, 41943040 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disk label type: dos
+Disk identifier: 0x000cdb98
+
+   Device Boot      Start         End      Blocks   Id  System
+/dev/sda1   *        2048     2099199     1048576   83  Linux
+/dev/sda2         2099200    41943039    19921920   8e  Linux LVM
+
+Disk /dev/mapper/centos-root: 18.2 GB, 18249416704 bytes, 35643392 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+
+
+Disk /dev/mapper/centos-swap: 2147 MB, 2147483648 bytes, 4194304 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+```
+
+To view all block information on harddrives, use ```lsblk``` command
+
+```
+[rajkamal@localhost rtm-devspace-documentation]$ lsblk
+NAME            MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda               8:0    0   20G  0 disk 
+├─sda1            8:1    0    1G  0 part /boot
+└─sda2            8:2    0   19G  0 part 
+  ├─centos-root 253:0    0   17G  0 lvm  /
+  └─centos-swap 253:1    0    2G  0 lvm  [SWAP]
+sr0              11:0    1 1024M  0 rom  
+
+```
+
+To view free disk space on a harddrive, use ```df``` command
+```
+[rajkamal@localhost rtm-devspace-documentation]$ df
+Filesystem              1K-blocks    Used Available Use% Mounted on
+devtmpfs                  2955508       0   2955508   0% /dev
+tmpfs                     2972348   79560   2892788   3% /dev/shm
+tmpfs                     2972348    9772   2962576   1% /run
+tmpfs                     2972348       0   2972348   0% /sys/fs/cgroup
+/dev/mapper/centos-root  17811456 6941320  10870136  39% /
+/dev/sda1                 1038336  242504    795832  24% /boot
+tmpfs                      594472       8    594464   1% /run/user/42
+tmpfs                      594472      56    594416   1% /run/user/1000
+[rajkamal@localhost rtm-devspace-documentation]$ df -h
+Filesystem               Size  Used Avail Use% Mounted on
+devtmpfs                 2.9G     0  2.9G   0% /dev
+tmpfs                    2.9G   69M  2.8G   3% /dev/shm
+tmpfs                    2.9G  9.6M  2.9G   1% /run
+tmpfs                    2.9G     0  2.9G   0% /sys/fs/cgroup
+/dev/mapper/centos-root   17G  6.7G   11G  39% /
+/dev/sda1               1014M  237M  778M  24% /boot
+tmpfs                    581M  8.0K  581M   1% /run/user/42
+tmpfs                    581M   56K  581M   1% /run/user/1000
+[rajkamal@localhost rtm-devspace-documentation]$ 
+
+```
