@@ -325,9 +325,11 @@ rmdir <directory_name>  # for empty directory
 rm -r <directory_name> # to recursively delete all its contents
 ```
 
-# Archive and compression
+# Power of Commandline
 
-## Archiving using tar
+## Archive and compression
+
+### Archiving using tar
 Bundle files into a single file.
 
 EXAMPLES
@@ -369,22 +371,22 @@ file1.txt  file2.txt  file3.pdf  file4.doc  file5.xls  file6.xml  file7.json
 
 ```
 
-## Compression using tar
+### Compression using tar
 
-### Gzip compression 
+#### Gzip compression 
 Gzip is used for compression
 
 ```
 tar -czf gzip-compression-demo.gz gzip-compresion-demo
 ```
 
-### Bz2 compression
+#### Bz2 compression
 
 ```
 tar -cjf bz2-compression-demo.bz2 bz2-compresion-demo
 ```
 
-### Lab
+#### Lab
 
 ```
 [rajkamal@localhost ~]$ mkdir compression
@@ -435,4 +437,150 @@ file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
 [rajkamal@localhost compression]$ ls bz2-compression-demo/
 file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
 [rajkamal@localhost compression]$ 
+```
+
+### Other archiving and compression commands
+
+```
+zip
+gzip
+gunzip
+bzip2
+bunzip2
+
+Refer man pages for these commands.
+
+```
+
+#### Lab for zip
+
+```
+[rajkamal@localhost compression]$ mkdir zip-demo
+[rajkamal@localhost compression]$ cp gzip-compression-demo/* zip-demo/
+[rajkamal@localhost compression]$ ls zip-demo/
+file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
+[rajkamal@localhost compression]$ zip -r zip-demo.zip zip-demo
+  adding: zip-demo/ (stored 0%)
+  adding: zip-demo/file1.pdf (stored 0%)
+  adding: zip-demo/file2.doc (stored 0%)
+  adding: zip-demo/file3.doc (stored 0%)
+  adding: zip-demo/file4.doc (stored 0%)
+  adding: zip-demo/file5.doc (stored 0%)
+[rajkamal@localhost compression]$ ls
+bz2-compression-demo  gzip-compression-demo  zip-demo  zip-demo.zip
+[rajkamal@localhost compression]$ rm -r zip-demo
+[rajkamal@localhost compression]$ unzip zip-demo.zip 
+Archive:  zip-demo.zip
+   creating: zip-demo/
+ extracting: zip-demo/file1.pdf      
+ extracting: zip-demo/file2.doc      
+ extracting: zip-demo/file3.doc      
+ extracting: zip-demo/file4.doc      
+ extracting: zip-demo/file5.doc      
+[rajkamal@localhost compression]$ ls
+bz2-compression-demo  gzip-compression-demo  zip-demo  zip-demo.zip
+
+```
+
+
+## Viewing text
+
+### Less, head and tail commands
+
+```
+less readme.md          # similar to man commands. Use up and down to navigate to the file contents.
+head readme.md          # shows top 10 lines of file by default
+tail readme.md          # shows bottom 10 lines of file by default
+head readme.md -n 20    # Shows first 10 lines of file
+tail -f cloudserverlogs.txt       # shows bottom 10 lines of file by default. But the file remains open for your view to file updates in realtime.
+
+```
+
+## Analyzing text document from command line
+Head get first 1 line from file
+
+```
+head  # prints top 10 lines of the file by default
+# -n  switch to print number of lines
+
+# stdout command
+# stdout print whatever is tossed into that bucket to the console. Every linux command, tosses output to the bucket which is printout to the screen from there.
+# here we are piping (redirecting the output to a file instead of a bucket) the output to a file using  > and  >>
+> Add to a file
+>> Append to a file
+
+
+#Eg.
+[rajkamal@localhost linux-essentials]$ head -n 1 cicero_disputations.txt > ancient.txt^C
+[rajkamal@localhost linux-essentials]$ head -n 1 cicero_disputations.txt > ancient.txt
+[rajkamal@localhost linux-essentials]$ head -n 1 plato_republic.txt > ancient.txt
+[rajkamal@localhost linux-essentials]$ head -n 1 aristotle_politics.txt >> ancient.txt
+[rajkamal@localhost linux-essentials]$ head -n 1 cicero_disputations.txt >> ancient.txt
+[rajkamal@localhost linux-essentials]$ cat ancient.txt 
+The Project Gutenberg EBook of The Republic of Plato, by Plato
+The Project Gutenberg EBook of Politics, by Aristotle
+The Project Gutenberg EBook of Treaties on Friendship and Old Age, by Marcus Tullius Cicero
+```
+
+Cut command
+
+```
+# cut - cuts the input file based on a delimitter and selects the fields to print
+# -d switch takes the delimitter
+# -f switch takes the fields range to print. Here we print fields starting from 6th to end.
+
+[rajkamal@localhost linux-essentials]$ cut -d" " -f 6- ancient.txt 
+The Republic of Plato, by Plato
+Politics, by Aristotle
+Treaties on Friendship and Old Age, by Marcus Tullius Cicero
+
+# Piping the output to a file
+[rajkamal@localhost linux-essentials]$ cut -d" " -f 6- ancient.txt > ancient_works.txt
+```
+
+Sort command
+
+```
+# sorts the contents of a file alphabetically
+
+[rajkamal@localhost linux-essentials]$ sort ancient_works.txt 
+Politics, by Aristotle
+The Republic of Plato, by Plato
+Treaties on Friendship and Old Age, by Marcus Tullius Cicero
+[rajkamal@localhost linux-essentials]$ sort ancient_works.txt > ancient_books.txt
+```
+
+Word count command
+
+```
+# word count command to add some statistics about the file
+# -l switch prints the no. of lines in each file
+# -w switch prints the no. of words in each file
+
+
+[rajkamal@localhost linux-essentials]$ echo >> ancient_books.txt 
+[rajkamal@localhost linux-essentials]$ echo "  Lines  Words  Document" >> ancient_books.txt 
+[rajkamal@localhost linux-essentials]$ cat ancient_works.txt 
+The Republic of Plato, by Plato
+Politics, by Aristotle
+Treaties on Friendship and Old Age, by Marcus Tullius Cicero
+[rajkamal@localhost linux-essentials]$ cat ancient_books.txt 
+Politics, by Aristotle
+The Republic of Plato, by Plato
+Treaties on Friendship and Old Age, by Marcus Tullius Cicero
+
+  Lines  Words  Document
+[rajkamal@localhost linux-essentials]$ wc -lw plato_republic.txt aristotle_politics.txt cicero_disputations.txt >> ancient_books.txt 
+[rajkamal@localhost linux-essentials]$ cat ancient_books.txt 
+Politics, by Aristotle
+The Republic of Plato, by Plato
+Treaties on Friendship and Old Age, by Marcus Tullius Cicero
+
+  Lines  Words  Document
+  29809  255816 plato_republic.txt
+  29809  255813 aristotle_politics.txt
+  29809  255820 cicero_disputations.txt
+  89427  767449 total
+[rajkamal@localhost linux-essentials]$ 
+
 ```
