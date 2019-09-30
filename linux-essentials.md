@@ -755,8 +755,7 @@ vim
 # dw = delete word
 # shift + a = append text at the end of the line
 # esc + :wq = write and exit
-
-<pre>
+</pre>
 
 ## Shell scripting
 
@@ -770,7 +769,7 @@ First line of any bash script need to have
 
 <pre>
   # = Comment line
-<pre>
+</pre>
 
 ```bash
 [rajkamal@localhost linux-essentials]$ cat first-bash-script.sh 
@@ -919,7 +918,7 @@ Adding arguments
 First argument $1 
 Second argument $2
 ...
-<pre>
+</pre>
 
 ```bash
 #!/bin/bash
