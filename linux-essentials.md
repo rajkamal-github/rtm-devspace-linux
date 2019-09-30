@@ -918,7 +918,7 @@ Adding arguments
 First argument $1 
 Second argument $2
 ...
-</pre>
+</dpre>
 
 ```bash
 #!/bin/bash
@@ -954,4 +954,19 @@ This is line three
 + Use the search function to find the word two.
 + Delete the entire second line with one command.
 + You are finished. Close the file without saving.
+</pre>
+
+
+# Linux Operating System
+
 <pre>
+  > To check CPU Info of an opearting system, run cat /proc/cpuinfo
+</pre>
+
+```bash
+cat /proc/cpuinfo 
+
+```
+
+
+
