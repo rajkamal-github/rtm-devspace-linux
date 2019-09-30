@@ -735,7 +735,7 @@ Hello Linux Pioneers
 ### Text editor vi/vim
 vim
 
-```
+<pre>
 # default command mode
 # i = insert mode
 # Esc = leave the mode
@@ -751,11 +751,12 @@ vim
 # u = undo
 # shift + g = go to the bottom of the file
 # esc + :w <file_name> = write file with a name to disk
+# / = search for text
 # dw = delete word
 # shift + a = append text at the end of the line
 # esc + :wq = write and exit
 
-```
+<pre>
 
 ## Shell scripting
 
@@ -766,3 +767,192 @@ First line of any bash script need to have
 
 #!/bin/bash
 </pre>
+
+<pre>
+  # = Comment line
+<pre>
+
+```bash
+[rajkamal@localhost linux-essentials]$ cat first-bash-script.sh 
+#!/bin/bash
+
+# My first bash script
+
+# Print cal
+cal
+
+# Print date in UTC
+date -u
+
+# Say hello
+echo "Hello there, $LOGNAME"
+[rajkamal@localhost linux-essentials]$ 
+```
+
+We can't directly run the script as the script mode is not executable.
+
+```bash
+[rajkamal@localhost linux-essentials]$ ./first-bash-script.sh
+bash: ./first-bash-script.sh: Permission denied
+[rajkamal@localhost linux-essentials]$ ls -l /usr/bin/cd
+-rwxr-xr-x. 1 root root 26 Aug  8 05:06 /usr/bin/cd
+[rajkamal@localhost linux-essentials]$ ls -l ./first-bash-script.sh 
+-rw-rw-r--. 1 rajkamal rajkamal 124 Sep 30 13:22 ./first-bash-script.sh
+
+```
+
+<pre>
+To change mode of the script to executable, use chmod command
+chmod +x file_name
+</pre>
+
+```bash
+[rajkamal@localhost linux-essentials]$ chmod +x ./first-bash-script.sh 
+[rajkamal@localhost linux-essentials]$ ls -l ./first-bash-script.sh 
+-rwxrwxr-x. 1 rajkamal rajkamal 124 Sep 30 13:22 ./first-bash-script.sh
+[rajkamal@localhost linux-essentials]$ ./first-bash-script.sh 
+   September 2019   
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30
+
+Mon Sep 30 20:29:22 UTC 2019
+Hello there, rajkamal
+
+```
+
+Again the command can be executed only through relative path. To change this, the commands should be in any of the paths location.
+
+```bash
+[rajkamal@localhost linux-essentials]$ $PATH
+bash: /usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/rajkamal/.local/bin:/home/rajkamal/bin: No such file or directory
+[rajkamal@localhost linux-essentials]$ mv ./first-bash-script.sh /home/rajkamal/bin/
+[rajkamal@localhost linux-essentials]$ first-bash-script.sh 
+   September 2019   
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30
+
+Mon Sep 30 20:30:56 UTC 2019
+Hello there, rajkamal
+[rajkamal@localhost linux-essentials]$ 
+
+```
+
+Rename the file to daily.sh
+
+```bash
+[rajkamal@localhost linux-essentials]$ mv /home/rajkamal/bin/first-bash-script.sh /home/rajkamal/bin/daily.sh
+[rajkamal@localhost linux-essentials]$ daily.sh 
+   September 2019   
+Su Mo Tu We Th Fr Sa
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30
+
+Mon Sep 30 20:32:48 UTC 2019
+Hello there, rajkamal
+[rajkamal@localhost linux-essentials]$ 
+
+```
+
+Add if statements
+
+```
+[rajkamal@localhost ~]$ cat bin/daily.sh 
+#!/bin/bash
+
+# My first bash script
+
+# Print cal
+cal
+
+# Print date in UTC
+date -u
+
+# Say hello
+echo "Hello there, $LOGNAME"
+
+# Say home or not
+if ["$PWD" == "$HOME"]
+then
+ echo "You are home."
+else
+ echo "You are in $PWD"
+fi
+
+```
+
+Looping statements
+
+```bash
+[rajkamal@localhost ~]$ for i in dilip muthu francis; do echo "$i"; done
+dilip
+muthu
+francis
+[rajkamal@localhost ~]$ for i in {1..10}; do echo "$i"; done
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+[rajkamal@localhost ~]$ 
+
+```
+
+Adding arguments
+
+<pre>
+First argument $1 
+Second argument $2
+...
+<pre>
+
+```bash
+#!/bin/bash
+
+# My first bash script
+
+# Add arguments
+SHOWDAY = $1
+
+if [ "$1" == "day" ]
+then
+# Print cal
+cal
+
+# Print date in UTC
+date -u
+fi
+
+```
+
+<pre>
+Excercise:
++ Log into your Linux Academy Linux Essentials lab server as user.
++ At the shell, using vi, create and open a new file called ~/file.txt.
++ Go to insert mode and place the following text in your new file:
+This is line one
+This is line two
+This is line three
+
++ Save your new file.
++ Close the vi text editor.
++ Reopen your file.txt file.
++ Use the search function to find the word two.
++ Delete the entire second line with one command.
++ You are finished. Close the file without saving.
+<pre>
