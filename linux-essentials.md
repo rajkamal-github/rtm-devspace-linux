@@ -756,3 +756,9 @@ vim
 # esc + :wq = write and exit
 
 ```
+
+## Shell scripting
+
+> .sh = shell script files but it's not necessary
+> First line of any bash script need to have
+> #!/bin/bash
