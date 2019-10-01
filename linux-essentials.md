@@ -1533,3 +1533,78 @@ drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
 [rajkamal@localhost Documents]$ 
 
 ```
+
+# Symbolic Links
+
+Equivalent of shortcut in windows
+
+<pre>
+ln -s Documents/file1.txt file1.txt.ln
+</pre>
+
+
+```
+[rajkamal@localhost ~]$ ln -s Documents/file1.txt file1.txt.ln
+[rajkamal@localhost ~]$ ls -l
+total 4
+drwxrwxr-x. 2 rajkamal rajkamal   44 Sep 30 13:55 bin
+drwxrwxr-x. 5 rajkamal rajkamal   79 Sep 28 17:43 compression
+drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Desktop
+drwxrwxr-x. 5 rajkamal rajkamal   72 Sep 30 11:22 development
+drwxr-xr-x. 3 rajkamal rajkamal  141 Sep 30 19:09 Documents
+drwxr-xr-x. 2 rajkamal rajkamal   88 Sep 30 14:30 Downloads
+lrwxrwxrwx. 1 rajkamal rajkamal   19 Sep 30 23:16 file1.txt.ln -> Documents/file1.txt
+-rw-rw-r--. 1 rajkamal rajkamal    0 Sep 26 11:04 help.txt
+drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Music
+drwxrwxr-x. 4 rajkamal rajkamal   29 Sep 27 10:36 node_modules
+drwxr-xr-x. 3 rajkamal rajkamal 4096 Sep 30 13:59 Pictures
+drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Public
+drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Templates
+drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Videos
+[rajkamal@localhost ~]$ 
+
+```
+
+# Special Files and Folders, and the Sticky Bit
+
+<pre>
+Temporary folders
+
+ls -l /var/tmp/ # contains temporary files that do not get deleted on reboot.
+ls -l /tmp/     # contains temporary files that do get deleted on reboot.
+
+Sticky bit = a permission that allows users that create their own files and folders can delete theirs and not another users one.
+# drwxrwxrwt for /tmp
+# t for others = indicates a sticky bit which is different than regular (r, w, x, -)
+
+To remove sticky bit
+sudo chmod o-t /tmp   # Symbolic
+sudo chmod 777 /tmp   # Octal
+
+To add sticky bit
+sudo chmod 1777 /tmp   # Octal
+
+</pre>
+
+
+```
+[rajkamal@localhost ~]$ ls -l /var/tmp/
+[rajkamal@localhost ~]$ ls -l /tmp/
+[rajkamal@localhost ~]$ 
+
+
+[muthu@localhost ~]$ ls -ld /tmp
+drwxrwxrwt. 42 root root 4096 Sep 30 23:33 /tmp
+[muthu@localhost ~]$ 
+
+[rajkamal@localhost ~]$ sudo chmod o-t /tmp
+[sudo] password for rajkamal: 
+[rajkamal@localhost ~]$ ls -ld /tmp
+drwxrwxrwx. 42 root root 4096 Sep 30 23:35 /tmp
+
+[rajkamal@localhost ~]$ sudo chmod 1777 /tmp 
+[rajkamal@localhost ~]$ ls -ld /tmp
+drwxrwxrwt. 42 root root 4096 Sep 30 23:37 /tmp
+
+
+```
