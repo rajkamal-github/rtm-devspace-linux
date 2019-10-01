@@ -1344,7 +1344,7 @@ muthu:********:18170:0:99999:7:::
 
 ```
 
-## Excercise
+## Exercise
 
 <pre>
 Learning Objectives
@@ -1380,4 +1380,156 @@ passwd: all authentication tokens updated successfully.
 [rajkamal@localhost home]$ id richard
 uid=1002(richard) gid=1003(richard) groups=1003(richard),1004(accounting)
 [rajkamal@localhost home]$ 
+```
+
+
+# Modifying file permissions and groups
+
+<pre>
+
+-rw-rw-r--
+# - = File or directory
+# U (user) = rw-
+# G (group) = rw-
+# O (other) = r--
+# r = read (4)
+# w = write (2)
+# x = execute (1)
+# - = none (0)
+# Octal value for rw- = 4+2+0 = 6
+# Octal value for file -rw-rw-r-- = 664
+
+
+chmod o-r file
+# o = other
+# g = group
+# u = user
+
+
+chmod 600 file7.json 
+# Octal equivalent of -rw------- = 600
+
+# Change group ownership of a file
+sudo chown :curators file7.json 
+sudo chgrp curators file6.xml
+# user:group
+
+# Change user ownership of a file
+sudo chown muthu file7.json
+# user:group
+
+
+sudo chown muthu file7.json
+</pre>
+
+
+```
+[rajkamal@localhost Documents]$ ls -l
+total 0
+drwxrwxr-x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
+
+
+[rajkamal@localhost Documents]$ chmod o-r file7.json
+[rajkamal@localhost Documents]$ ls -l
+total 0
+drwxrwxr-x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
+-rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
+
+
+[rajkamal@localhost ~]$ chmod -R o-r Documents/*
+[rajkamal@localhost ~]$ cd Documents/
+[rajkamal@localhost Documents]$ ls -l
+total 0
+drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
+[rajkamal@localhost Documents]$ 
+
+
+[rajkamal@localhost Documents]$ chmod 600 file7.json 
+[rajkamal@localhost Documents]$ ls -l
+total 0
+drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
+-rw-------. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
+[rajkamal@localhost Documents]$ 
+
+
+[rajkamal@localhost Documents]$ sudo chown :curators file7.json 
+[sudo] password for rajkamal: 
+[rajkamal@localhost Documents]$ ls -l
+total 0
+drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
+-rw-------. 1 rajkamal curators 0 Sep 28 16:45 file7.json
+
+
+[rajkamal@localhost Documents]$ sudo chown muthu file7.json
+[rajkamal@localhost Documents]$ ls -l
+total 0
+drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
+-rw-------. 1 muthu    curators 0 Sep 28 16:45 file7.json
+[rajkamal@localhost Documents]$ 
+
+[rajkamal@localhost Documents]$ sudo chgrp curators file6.xml
+[rajkamal@localhost Documents]$ ls -l
+total 0
+drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 rajkamal curators 0 Sep 28 16:45 file6.xml
+-rw-------. 1 muthu    curators 0 Sep 28 16:45 file7.json
+
+
+[rajkamal@localhost Documents]$ sudo chown rajkamal:rajkamal file6.xml 
+[rajkamal@localhost Documents]$ sudo chown rajkamal:rajkamal file7.json 
+[rajkamal@localhost Documents]$ ls -l
+total 0
+drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
+-rw-------. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
+[rajkamal@localhost Documents]$ 
+
 ```
