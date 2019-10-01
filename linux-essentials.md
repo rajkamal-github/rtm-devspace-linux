@@ -1343,3 +1343,41 @@ muthu:********:18170:0:99999:7:::
 
 
 ```
+
+## Excercise
+
+<pre>
+Learning Objectives
+ - Create a new user: username `mphillips` with full name "Mary Phillips". The default shell should be the Bourne Again SHell (bash). Then set password to `LinuxPassword`.
+ - Create a user account called `richard`, using all defaults.
+ - There is a specific file on the Linux file system in which we can verify our new usernames were created. View it to determine the differences between the two accounts we just created.
+ - Give the new user account, `richard`, a password of `LinuxPassword` and a full name of "Richard Layton".
+ - Create a new group called `accounting`.
+ - Add `richard` to `accounting` group, and verify he was added successfully.
+</pre>
+
+```
+[rajkamal@localhost home]$ sudo useradd -c "Mary Phillips" -m -s "/bin/bash" mphillips
+[sudo] password for rajkamal: 
+[rajkamal@localhost home]$ vi /etc/passwd
+[rajkamal@localhost home]$ sudo passwd mphillips
+Changing password for user mphillips.
+New password: 
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[rajkamal@localhost home]$ sudo useradd richard
+[rajkamal@localhost home]$ vi /etc/passwd
+[rajkamal@localhost home]$ sudo passwd richard
+Changing password for user richard.
+New password: 
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[rajkamal@localhost home]$ sudo usermod -c "Richard Layton" richard
+[rajkamal@localhost home]$ vi /etc/passwd
+[rajkamal@localhost home]$ sudo groupadd accounting
+[rajkamal@localhost home]$ vi /etc/group
+[rajkamal@localhost home]$ sudo usermod -G accounting richard
+[rajkamal@localhost home]$ id richard
+uid=1002(richard) gid=1003(richard) groups=1003(richard),1004(accounting)
+[rajkamal@localhost home]$ 
+```
