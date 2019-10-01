@@ -1210,13 +1210,12 @@ less /etc/sudoers
 sudo vi /etc/passwd
 
 sudo vi /etc/group
+</pre>
 
 > Three types of users 
 + Regular user 
 + Root user
 + System user = responsible for running backend services and deamons
-
-</pre>
 
 ```
 [rajkamal@localhost rtm-devspace-documentation]$ who
