@@ -1265,3 +1265,81 @@ wheel:x:10:rajkamal
 
 
 ```
+
+# Linux users
+
+<pre>
+
+groupadd = add new group to the system
+Eg. sudo groupadd curators
+
+useradd = add user to the system
+Eg. sudo useradd -G 1001 -m -c "Muthu Raj" muthu
+
+passwd = to change the password for user
+Eg. passwd muthu
+
+userdel = delete user from the system
+Eg.
+sudo userdel -r muthu
+# -r = switch to recursively delete the home directory for the user.
+</pre>
+
+
+```
+rajkamal@localhost linux-essentials]$ sudo groupadd curators
+rajkamal@localhost linux-essentials]$ sudo vi /etc/group
+# curators:x:1001:
+# First field = name of the group
+# Second field = password (NA)
+# Third field = Group id
+
+[rajkamal@localhost linux-essentials]$ sudo useradd -G 1001 -m -c "Dilip Kumar" dilip
+[rajkamal@localhost linux-essentials]$ sudo vi /etc/passwd
+# dilip:x:1002:1003:Dilip Kumar:/home/dilip:/bin/bash
+[rajkamal@localhost linux-essentials]$ sudo vi /etc/passwd
+[rajkamal@localhost linux-essentials]$ sudo useradd -G 1001 -m -c "Muthu Raj" muthu
+[rajkamal@localhost linux-essentials]$ sudo vi /etc/passwd
+[rajkamal@localhost linux-essentials]$ id dilip
+uid=1002(dilip) gid=1003(dilip) groups=1003(dilip),1001(curators)
+[rajkamal@localhost linux-essentials]$ id muthu
+uid=1003(muthu) gid=1004(muthu) groups=1004(muthu),1001(curators)
+[rajkamal@localhost linux-essentials]$ id dilp
+uid=1001(dilp) gid=1002(dilp) groups=1002(dilp),1001(curators)
+[rajkamal@localhost linux-essentials]$ 
+[rajkamal@localhost home]$ ls
+dilip  dilp  muthu  rajkamal
+[rajkamal@localhost home]$ ls -a /etc/skel  # Default boiler plate folders for any user created in the system
+.  ..  .bash_logout  .bash_profile  .bashrc  .mozilla
+
+[rajkamal@localhost home]$ passwd muthu
+passwd: Only root can specify a user name.
+[rajkamal@localhost home]$ sudo passwd muthu
+Changing password for user muthu.
+New password: 
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[rajkamal@localhost home]$ sudo passwd dilip
+Changing password for user dilip.
+New password: 
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[rajkamal@localhost home]$ sudo vi /etc/shadow
+
+dilip:********.:18170:0:99999:7:::
+muthu:********:18170:0:99999:7:::
+
+# First field = user
+# Second field = encrypted password
+# Third field = No. of days since Jan 1, 1970 that the password was last changed. It is known UNIX EPAC time.
+# Fourth field = No. of days before the user need to change the pasword 
+# Fifth field = Maximum password age
+# Sixth field = Password warning days
+
+
+[rajkamal@localhost home]$ sudo userdel -r muthu
+[rajkamal@localhost home]$ sudo userdel -r dilp
+[rajkamal@localhost home]$ sudo userdel -r dilip
+
+
+```
