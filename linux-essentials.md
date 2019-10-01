@@ -1187,3 +1187,82 @@ rtt min/avg/max/mdev = 7.404/7.795/8.039/0.279 ms
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 ```
+
+# Linux Security and File Permissions
+
+<pre>
+who
+
+id
+
+w
+
+id rajkamal
+# uid = userid
+# gid = user group
+# groups = 1000
+# 10 (wheel) = indicates part of sudoers
+
+su -
+
+less /etc/sudoers
+
+sudo vi /etc/passwd
+
+sudo vi /etc/group
+
+> Three types of users 
++ Regular user 
++ Root user
++ System user = responsible for running backend services and deamons
+
+</pre>
+
+```
+[rajkamal@localhost rtm-devspace-documentation]$ who
+rajkamal :0           2019-09-29 22:18 (:0)
+rajkamal pts/0        2019-09-30 11:21 (:0)
+rajkamal pts/1        2019-09-30 11:31 (:0)
+[rajkamal@localhost rtm-devspace-documentation]$ id
+uid=1000(rajkamal) gid=1000(rajkamal) groups=1000(rajkamal),10(wheel) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+[rajkamal@localhost rtm-devspace-documentation]$ w
+ 17:23:40 up  8:01,  3 users,  load average: 0.00, 0.01, 0.05
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+rajkamal :0       :0               Sun22   ?xdm?  45:45   0.35s /usr/libexec/gnome-session-binary --session gnome-classic
+rajkamal pts/0    :0               11:21    3:00m  2.25s  2.25s bash
+rajkamal pts/1    :0               11:31    4.00s  1.26s  0.03s w
+[rajkamal@localhost rtm-devspace-documentation]$ id rajkamal
+uid=1000(rajkamal) gid=1000(rajkamal) groups=1000(rajkamal),10(wheel)
+[rajkamal@localhost rtm-devspace-documentation]$ 
+
+
+[rajkamal@localhost rtm-devspace-documentation]$ sudo cat /etc/sudoers
+******
+
+## Same thing without a password
+# %wheel	ALL=(ALL)	NOPASSWD: ALL
+
+***
+
+[rajkamal@localhost linux-essentials]$ sudo vi /etc/passwd
+# rajkamal:x:1000:1000:rajkamal:/home/rajkamal:/bin/bash
+# First field = user
+# Second field = encrpted password
+# Third field = user id
+# Fourth field = group id
+# Fifth field = comment
+# Sixth field = home directory path
+# Seventh field = Default login shell
+# Eg.
+rajkamal:x:1000:1000:rajkamal:/home/rajkamal:/bin/bash
+
+[rajkamal@localhost linux-essentials]$ sudo vi /etc/group
+# First field = name of the group
+# Second field = inidicative for the password of the group. Mostly, there wouldn't be any
+# Third field = Id of the group
+# Fourth field = Members of the group
+# Eg.
+wheel:x:10:rajkamal
+
+
+```
