@@ -111,18 +111,18 @@ cd - #  get back to where you were last time based on $OLDPWD
 # Eg:
 
 ```
-[rajkamal@localhost ~]$ ls
+$ ls
 bin      Documents  help.txt  Pictures  Templates
 Desktop  Downloads  Music     Public    Videos
-[rajkamal@localhost ~]$ cd Documents/
-[rajkamal@localhost Documents]$ pwd
-/home/rajkamal/Documents
-[rajkamal@localhost Documents]$ cd
-[rajkamal@localhost ~]$ pwd
-/home/rajkamal
-[rajkamal@localhost ~]$ cd -
-/home/rajkamal/Documents
-[rajkamal@localhost Documents]$ 
+$ cd Documents/
+$ pwd
+/home/anns/Documents
+$ cd
+$ pwd
+/home/anns
+$ cd -
+/home/anns/Documents
+$ 
 
 ```
 
@@ -212,7 +212,7 @@ ls \
 # Formatting commands
 ```
 # $ user
-[rajkamal@localhost ~]$ 
+$ 
 
 # "#" for root account
 root@localhost ~]# 
@@ -262,7 +262,7 @@ cd /
 ```
 
 ```
-[rajkamal@localhost /]$ ls -l
+$ ls -l
 total 24
 lrwxrwxrwx.   1 root root    7 Sep 25 17:22 bin -> usr/bin  # executable programs where the regular user can run
 dr-xr-xr-x.   5 root root 4096 Sep 25 22:56 boot            # boot directory contains necessary files to get boot up. Linux kernel also resides here.
@@ -291,22 +291,22 @@ drwxr-xr-x.  22 root root 4096 Sep 26 09:43 var             # contains files tha
 Absolute path to the file. Always begin with the root directory (/)
 
 ```
-[rajkamal@localhost ~]$ pwd
-/home/rajkamal
-[rajkamal@localhost ~]$ 
+$ pwd
+/home/anns
+$ 
 ```
 
 ## Relative Path 
 Relative path (doesn't start with /. Always relative to current location)
 
 ```
-[rajkamal@localhost ~]$ cd ~
-[rajkamal@localhost ~]$ pwd
-/home/rajkamal
-[rajkamal@localhost ~]$ ls
+$ cd ~
+$ pwd
+/home/anns
+$ ls
 bin  Desktop  development  Documents  Downloads  help.txt  Music  node_modules  Pictures  Public  Templates  Videos
-[rajkamal@localhost ~]$ cd development/
-[rajkamal@localhost development]$ 
+$ cd development/
+$ 
 ```
 
 # Files and Directories
@@ -346,27 +346,27 @@ tar -xf archive.tar
 ```
 
 ```
-[rajkamal@localhost ~]$ ls
+$ ls
 bin  Desktop  development  development.tar  Documents  Downloads  help.txt  Music  node_modules  Pictures  Public  Templates  Videos
-[rajkamal@localhost ~]$ touch Documents/file1.txt
-[rajkamal@localhost ~]$ touch Documents/file2.txt
-[rajkamal@localhost ~]$ touch Documents/file3.pdf
-[rajkamal@localhost ~]$ touch Documents/file4.doc
-[rajkamal@localhost ~]$ touch Documents/file5.xls
-[rajkamal@localhost ~]$ touch Documents/file6.xml
-[rajkamal@localhost ~]$ touch Documents/file7.json
-[rajkamal@localhost ~]$ ls Documents/
+$ touch Documents/file1.txt
+$ touch Documents/file2.txt
+$ touch Documents/file3.pdf
+$ touch Documents/file4.doc
+$ touch Documents/file5.xls
+$ touch Documents/file6.xml
+$ touch Documents/file7.json
+$ ls Documents/
 file1.txt  file2.txt  file3.pdf  file4.doc  file5.xls  file6.xml  file7.json
-[rajkamal@localhost ~]$ tar -cf archive-documents.tar Documents
-[rajkamal@localhost ~]$ ls
+$ tar -cf archive-documents.tar Documents
+$ ls
 archive-documents.tar  bin  Desktop  development  development.tar  Documents  Downloads  help.txt  Music  node_modules  Pictures  Public  Templates  Videos
-[rajkamal@localhost ~]$ mkdir tar-demo
-[rajkamal@localhost ~]$ mv archive-documents.tar tar-demo/
-[rajkamal@localhost ~]$ cd tar-demo/
-[rajkamal@localhost tar-demo]$ tar -xf archive-documents.tar 
-[rajkamal@localhost tar-demo]$ ls
+$ mkdir tar-demo
+$ mv archive-documents.tar tar-demo/
+$ cd tar-demo/
+$ tar -xf archive-documents.tar 
+$ ls
 archive-documents.tar  Documents
-[rajkamal@localhost tar-demo]$ ls Documents/
+$ ls Documents/
 file1.txt  file2.txt  file3.pdf  file4.doc  file5.xls  file6.xml  file7.json
 
 ```
@@ -389,54 +389,54 @@ tar -cjf bz2-compression-demo.bz2 bz2-compresion-demo
 #### Lab
 
 ```
-[rajkamal@localhost ~]$ mkdir compression
-[rajkamal@localhost ~]$ cd compression/
-[rajkamal@localhost compression]$ ls
-[rajkamal@localhost compression]$ mkdir gzip-compression-demo
-[rajkamal@localhost compression]$ touch gzip-compression-demo/file1.pdf
-[rajkamal@localhost compression]$ touch gzip-compression-demo/file2.doc
-[rajkamal@localhost compression]$ touch gzip-compression-demo/file3.doc
-[rajkamal@localhost compression]$ touch gzip-compression-demo/file4.doc
-[rajkamal@localhost compression]$ touch gzip-compression-demo/file5.doc
-[rajkamal@localhost compression]$ mkdir bz2-compression-demo
-[rajkamal@localhost compression]$ cp gzip-compression-demo/* bz2-compression-demo/
-[rajkamal@localhost compression]$ ls bz2-compression-demo/
+$ mkdir compression
+$ cd compression/
+$ ls
+$ mkdir gzip-compression-demo
+$ touch gzip-compression-demo/file1.pdf
+$ touch gzip-compression-demo/file2.doc
+$ touch gzip-compression-demo/file3.doc
+$ touch gzip-compression-demo/file4.doc
+$ touch gzip-compression-demo/file5.doc
+$ mkdir bz2-compression-demo
+$ cp gzip-compression-demo/* bz2-compression-demo/
+$ ls bz2-compression-demo/
 file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
-[rajkamal@localhost compression]$ ls gzip-compression-demo/
+$ ls gzip-compression-demo/
 file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
-[rajkamal@localhost compression]$ tar -czf gzip-compression-demo.gz gzip-compression-demo
-[rajkamal@localhost compression]$ tar -cjf bz2-compression-demo.bz2 bz2-compression-demo
-[rajkamal@localhost compression]$ ls
+$ tar -czf gzip-compression-demo.gz gzip-compression-demo
+$ tar -cjf bz2-compression-demo.bz2 bz2-compression-demo
+$ ls
 bz2-compression-demo  bz2-compression-demo.bz2  gzip-compression-demo  gzip-compression-demo.gz
-[rajkamal@localhost compression]$ tar -tvf gzip-compression-demo.gz 
-drwxrwxr-x rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file1.pdf
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file2.doc
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file3.doc
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file4.doc
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 gzip-compression-demo/file5.doc
-[rajkamal@localhost compression]$ tar -tvf bz2-compression-demo.bz2 
-drwxrwxr-x rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file1.pdf
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file2.doc
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file3.doc
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file4.doc
--rw-rw-r-- rajkamal/rajkamal 0 2019-09-28 17:01 bz2-compression-demo/file5.doc
-[rajkamal@localhost compression]$ ls
+$ tar -tvf gzip-compression-demo.gz 
+drwxrwxr-x anns/anns 0 2019-09-28 17:01 gzip-compression-demo/
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 gzip-compression-demo/file1.pdf
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 gzip-compression-demo/file2.doc
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 gzip-compression-demo/file3.doc
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 gzip-compression-demo/file4.doc
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 gzip-compression-demo/file5.doc
+$ tar -tvf bz2-compression-demo.bz2 
+drwxrwxr-x anns/anns 0 2019-09-28 17:01 bz2-compression-demo/
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 bz2-compression-demo/file1.pdf
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 bz2-compression-demo/file2.doc
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 bz2-compression-demo/file3.doc
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 bz2-compression-demo/file4.doc
+-rw-rw-r-- anns/anns 0 2019-09-28 17:01 bz2-compression-demo/file5.doc
+$ ls
 bz2-compression-demo  bz2-compression-demo.bz2  gzip-compression-demo  gzip-compression-demo.gz
-[rajkamal@localhost compression]$ rm -r bz2-compression-demo
-[rajkamal@localhost compression]$ rm -r gzip-compression-demo
-[rajkamal@localhost compression]$ ls
+$ rm -r bz2-compression-demo
+$ rm -r gzip-compression-demo
+$ ls
 bz2-compression-demo.bz2  gzip-compression-demo.gz
-[rajkamal@localhost compression]$ tar -xzf gzip-compression-demo.gz 
-[rajkamal@localhost compression]$ tar -xjf bz2-compression-demo.bz2 
-[rajkamal@localhost compression]$ ls
+$ tar -xzf gzip-compression-demo.gz 
+$ tar -xjf bz2-compression-demo.bz2 
+$ ls
 bz2-compression-demo  bz2-compression-demo.bz2  gzip-compression-demo  gzip-compression-demo.gz
-[rajkamal@localhost compression]$ ls gzip-compression-demo/
+$ ls gzip-compression-demo/
 file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
-[rajkamal@localhost compression]$ ls bz2-compression-demo/
+$ ls bz2-compression-demo/
 file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
-[rajkamal@localhost compression]$ 
+$ 
 ```
 
 ### Other archiving and compression commands
@@ -455,21 +455,21 @@ Refer man pages for these commands.
 #### Lab for zip
 
 ```
-[rajkamal@localhost compression]$ mkdir zip-demo
-[rajkamal@localhost compression]$ cp gzip-compression-demo/* zip-demo/
-[rajkamal@localhost compression]$ ls zip-demo/
+$ mkdir zip-demo
+$ cp gzip-compression-demo/* zip-demo/
+$ ls zip-demo/
 file1.pdf  file2.doc  file3.doc  file4.doc  file5.doc
-[rajkamal@localhost compression]$ zip -r zip-demo.zip zip-demo
+$ zip -r zip-demo.zip zip-demo
   adding: zip-demo/ (stored 0%)
   adding: zip-demo/file1.pdf (stored 0%)
   adding: zip-demo/file2.doc (stored 0%)
   adding: zip-demo/file3.doc (stored 0%)
   adding: zip-demo/file4.doc (stored 0%)
   adding: zip-demo/file5.doc (stored 0%)
-[rajkamal@localhost compression]$ ls
+$ ls
 bz2-compression-demo  gzip-compression-demo  zip-demo  zip-demo.zip
-[rajkamal@localhost compression]$ rm -r zip-demo
-[rajkamal@localhost compression]$ unzip zip-demo.zip 
+$ rm -r zip-demo
+$ unzip zip-demo.zip 
 Archive:  zip-demo.zip
    creating: zip-demo/
  extracting: zip-demo/file1.pdf      
@@ -477,7 +477,7 @@ Archive:  zip-demo.zip
  extracting: zip-demo/file3.doc      
  extracting: zip-demo/file4.doc      
  extracting: zip-demo/file5.doc      
-[rajkamal@localhost compression]$ ls
+$ ls
 bz2-compression-demo  gzip-compression-demo  zip-demo  zip-demo.zip
 
 ```
@@ -511,12 +511,12 @@ head  # prints top 10 lines of the file by default
 
 
 #Eg.
-[rajkamal@localhost linux-essentials]$ head -n 1 cicero_disputations.txt > ancient.txt^C
-[rajkamal@localhost linux-essentials]$ head -n 1 cicero_disputations.txt > ancient.txt
-[rajkamal@localhost linux-essentials]$ head -n 1 plato_republic.txt > ancient.txt
-[rajkamal@localhost linux-essentials]$ head -n 1 aristotle_politics.txt >> ancient.txt
-[rajkamal@localhost linux-essentials]$ head -n 1 cicero_disputations.txt >> ancient.txt
-[rajkamal@localhost linux-essentials]$ cat ancient.txt 
+$ head -n 1 cicero_disputations.txt > ancient.txt^C
+$ head -n 1 cicero_disputations.txt > ancient.txt
+$ head -n 1 plato_republic.txt > ancient.txt
+$ head -n 1 aristotle_politics.txt >> ancient.txt
+$ head -n 1 cicero_disputations.txt >> ancient.txt
+$ cat ancient.txt 
 The Project Gutenberg EBook of The Republic of Plato, by Plato
 The Project Gutenberg EBook of Politics, by Aristotle
 The Project Gutenberg EBook of Treaties on Friendship and Old Age, by Marcus Tullius Cicero
@@ -529,13 +529,13 @@ Cut command
 # -d switch takes the delimitter
 # -f switch takes the fields range to print. Here we print fields starting from 6th to end.
 
-[rajkamal@localhost linux-essentials]$ cut -d" " -f 6- ancient.txt 
+$ cut -d" " -f 6- ancient.txt 
 The Republic of Plato, by Plato
 Politics, by Aristotle
 Treaties on Friendship and Old Age, by Marcus Tullius Cicero
 
 # Piping the output to a file
-[rajkamal@localhost linux-essentials]$ cut -d" " -f 6- ancient.txt > ancient_works.txt
+$ cut -d" " -f 6- ancient.txt > ancient_works.txt
 ```
 
 Sort command
@@ -543,11 +543,11 @@ Sort command
 ```
 # sorts the contents of a file alphabetically
 
-[rajkamal@localhost linux-essentials]$ sort ancient_works.txt 
+$ sort ancient_works.txt 
 Politics, by Aristotle
 The Republic of Plato, by Plato
 Treaties on Friendship and Old Age, by Marcus Tullius Cicero
-[rajkamal@localhost linux-essentials]$ sort ancient_works.txt > ancient_books.txt
+$ sort ancient_works.txt > ancient_books.txt
 ```
 
 Word count command
@@ -558,20 +558,20 @@ Word count command
 # -w switch prints the no. of words in each file
 
 
-[rajkamal@localhost linux-essentials]$ echo >> ancient_books.txt 
-[rajkamal@localhost linux-essentials]$ echo "  Lines  Words  Document" >> ancient_books.txt 
-[rajkamal@localhost linux-essentials]$ cat ancient_works.txt 
+$ echo >> ancient_books.txt 
+$ echo "  Lines  Words  Document" >> ancient_books.txt 
+$ cat ancient_works.txt 
 The Republic of Plato, by Plato
 Politics, by Aristotle
 Treaties on Friendship and Old Age, by Marcus Tullius Cicero
-[rajkamal@localhost linux-essentials]$ cat ancient_books.txt 
+$ cat ancient_books.txt 
 Politics, by Aristotle
 The Republic of Plato, by Plato
 Treaties on Friendship and Old Age, by Marcus Tullius Cicero
 
   Lines  Words  Document
-[rajkamal@localhost linux-essentials]$ wc -lw plato_republic.txt aristotle_politics.txt cicero_disputations.txt >> ancient_books.txt 
-[rajkamal@localhost linux-essentials]$ cat ancient_books.txt 
+$ wc -lw plato_republic.txt aristotle_politics.txt cicero_disputations.txt >> ancient_books.txt 
+$ cat ancient_books.txt 
 Politics, by Aristotle
 The Republic of Plato, by Plato
 Treaties on Friendship and Old Age, by Marcus Tullius Cicero
@@ -581,7 +581,7 @@ Treaties on Friendship and Old Age, by Marcus Tullius Cicero
   29809  255813 aristotle_politics.txt
   29809  255820 cicero_disputations.txt
   89427  767449 total
-[rajkamal@localhost linux-essentials]$ 
+$ 
 
 ```
 
@@ -604,50 +604,50 @@ Treaties on Friendship and Old Age, by Marcus Tullius Cicero
 # Eg.
 
 # case sensitive search
-[rajkamal@localhost linux-essentials]$ grep republic cicero_disputations.txt 
+$ grep republic cicero_disputations.txt 
 had a myth respecting its own origin; the Platonic republic may also have
 
 # case in-sensitive search
-[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt
-[rajkamal@localhost linux-essentials]$ 
+$ grep -i republic cicero_disputations.txt
+$ 
 
 # Piping output of grep to commands
 
-[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt | less
-[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt | wc -w
+$ grep -i republic cicero_disputations.txt | less
+$ grep -i republic cicero_disputations.txt | wc -w
 397
-[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt | wc -l
+$ grep -i republic cicero_disputations.txt | wc -l
 36
-[rajkamal@localhost linux-essentials]$ grep -i republic cicero_disputations.txt | wc -lw
+$ grep -i republic cicero_disputations.txt | wc -lw
      36     397
-[rajkamal@localhost linux-essentials]$ 
+$ 
 
 # Regular expressions
 
 # Lines starting with a word republic
-[rajkamal@localhost linux-essentials]$ grep -i '^republic' cicero_disputations.txt
+$ grep -i '^republic' cicero_disputations.txt
 
 # Lines end with a word republic
-[rajkamal@localhost linux-essentials]$ grep -i 'republic$' cicero_disputations.txt
-[rajkamal@localhost linux-essentials]$ 
+$ grep -i 'republic$' cicero_disputations.txt
+$ 
 
 # Lines starting with specific characters
-[rajkamal@localhost linux-essentials]$ grep '^[AaBb]' cicero_disputations.txt
+$ grep '^[AaBb]' cicero_disputations.txt
 
 # Lines doesn't start with specific characters
-[rajkamal@localhost linux-essentials]$ grep '^[^AaBb]' cicero_disputations.txt
+$ grep '^[^AaBb]' cicero_disputations.txt
 
 # Any word that has first unknown character (.) and second character as h
-[rajkamal@localhost linux-essentials]$ grep '.[h]' cicero_disputations.txt 
+$ grep '.[h]' cicero_disputations.txt 
 
 # Any word starting with www
-[rajkamal@localhost linux-essentials]$ grep 'www*' cicero_disputations.txt
+$ grep 'www*' cicero_disputations.txt
 
 # no star (*) would fetch the same results
-[rajkamal@localhost linux-essentials]$ grep 'www' cicero_disputations.txt 
+$ grep 'www' cicero_disputations.txt 
 
 # if you are specific and enclose in a block. This would get only www and ignore wwww.
-[rajkamal@localhost linux-essentials]$ grep '\bwww\b' cicero_disputations.txt 
+$ grep '\bwww\b' cicero_disputations.txt 
 
 ```
 
@@ -661,8 +661,8 @@ had a myth respecting its own origin; the Platonic republic may also have
 - Now verify that the log that you redirected to the file.log file contains your output.
 
 ```
-[rajkamal@localhost linux-essentials]$ sudo grep "DHCPREQUEST" /var/log/messages 
-[sudo] password for rajkamal: 
+$ sudo grep "DHCPREQUEST" /var/log/messages 
+[sudo] password for anns: 
 Sep 25 17:32:47 localhost dhclient[8555]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x1311cbb6)
 Sep 25 17:32:54 localhost dhclient[9947]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x48d266cf)
 Sep 25 17:39:17 localhost dhclient[1159]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x4cbac94d)
@@ -688,9 +688,9 @@ Sep 27 17:58:57 localhost dhclient[19178]: DHCPREQUEST on eth0 to 255.255.255.25
 Sep 28 15:10:26 localhost dhclient[19246]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x22659532)
 Sep 29 22:15:05 localhost dhclient[1194]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x58057379)
 Sep 30 09:30:53 localhost dhclient[3557]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x72e9199)
-[rajkamal@localhost linux-essentials]$ sudo grep "DHCPREQUEST" /var/log/messages | less
-[rajkamal@localhost linux-essentials]$ sudo grep "DHCPREQUEST" /var/log/messages > testfile.logd
-[rajkamal@localhost linux-essentials]$ cat testfile.log 
+$ sudo grep "DHCPREQUEST" /var/log/messages | less
+$ sudo grep "DHCPREQUEST" /var/log/messages > testfile.logd
+$ cat testfile.log 
 Sep 25 17:32:47 localhost dhclient[8555]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x1311cbb6)
 Sep 25 17:32:54 localhost dhclient[9947]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x48d266cf)
 Sep 25 17:39:17 localhost dhclient[1159]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x4cbac94d)
@@ -716,7 +716,7 @@ Sep 27 17:58:57 localhost dhclient[19178]: DHCPREQUEST on eth0 to 255.255.255.25
 Sep 28 15:10:26 localhost dhclient[19246]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x22659532)
 Sep 29 22:15:05 localhost dhclient[1194]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x58057379)
 Sep 30 09:30:53 localhost dhclient[3557]: DHCPREQUEST on eth0 to 255.255.255.255 port 67 (xid=0x72e9199)
-[rajkamal@localhost linux-essentials]$ 
+$ 
 ```
 
 ## Turning commands into a Script
@@ -725,10 +725,10 @@ Sep 30 09:30:53 localhost dhclient[3557]: DHCPREQUEST on eth0 to 255.255.255.255
 nano command
 
 ```
-[rajkamal@localhost linux-essentials]$ nano toaster.txt
-[rajkamal@localhost linux-essentials]$ cat toaster.txt 
+$ nano toaster.txt
+$ cat toaster.txt 
 Hello Linux Pioneers
-[rajkamal@localhost linux-essentials]$ 
+$ 
 
 ```
 
@@ -772,7 +772,7 @@ First line of any bash script need to have
 </pre>
 
 ```bash
-[rajkamal@localhost linux-essentials]$ cat first-bash-script.sh 
+$ cat first-bash-script.sh 
 #!/bin/bash
 
 # My first bash script
@@ -785,18 +785,18 @@ date -u
 
 # Say hello
 echo "Hello there, $LOGNAME"
-[rajkamal@localhost linux-essentials]$ 
+$ 
 ```
 
 We can't directly run the script as the script mode is not executable.
 
 ```bash
-[rajkamal@localhost linux-essentials]$ ./first-bash-script.sh
+$ ./first-bash-script.sh
 bash: ./first-bash-script.sh: Permission denied
-[rajkamal@localhost linux-essentials]$ ls -l /usr/bin/cd
+$ ls -l /usr/bin/cd
 -rwxr-xr-x. 1 root root 26 Aug  8 05:06 /usr/bin/cd
-[rajkamal@localhost linux-essentials]$ ls -l ./first-bash-script.sh 
--rw-rw-r--. 1 rajkamal rajkamal 124 Sep 30 13:22 ./first-bash-script.sh
+$ ls -l ./first-bash-script.sh 
+-rw-rw-r--. 1 anns anns 124 Sep 30 13:22 ./first-bash-script.sh
 
 ```
 
@@ -806,10 +806,10 @@ chmod +x file_name
 </pre>
 
 ```bash
-[rajkamal@localhost linux-essentials]$ chmod +x ./first-bash-script.sh 
-[rajkamal@localhost linux-essentials]$ ls -l ./first-bash-script.sh 
--rwxrwxr-x. 1 rajkamal rajkamal 124 Sep 30 13:22 ./first-bash-script.sh
-[rajkamal@localhost linux-essentials]$ ./first-bash-script.sh 
+$ chmod +x ./first-bash-script.sh 
+$ ls -l ./first-bash-script.sh 
+-rwxrwxr-x. 1 anns anns 124 Sep 30 13:22 ./first-bash-script.sh
+$ ./first-bash-script.sh 
    September 2019   
 Su Mo Tu We Th Fr Sa
  1  2  3  4  5  6  7
@@ -819,17 +819,17 @@ Su Mo Tu We Th Fr Sa
 29 30
 
 Mon Sep 30 20:29:22 UTC 2019
-Hello there, rajkamal
+Hello there, anns
 
 ```
 
 Again the command can be executed only through relative path. To change this, the commands should be in any of the paths location.
 
 ```bash
-[rajkamal@localhost linux-essentials]$ $PATH
-bash: /usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/rajkamal/.local/bin:/home/rajkamal/bin: No such file or directory
-[rajkamal@localhost linux-essentials]$ mv ./first-bash-script.sh /home/rajkamal/bin/
-[rajkamal@localhost linux-essentials]$ first-bash-script.sh 
+$ $PATH
+bash: /usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/home/anns/.local/bin:/home/anns/bin: No such file or directory
+$ mv ./first-bash-script.sh /home/anns/bin/
+$ first-bash-script.sh 
    September 2019   
 Su Mo Tu We Th Fr Sa
  1  2  3  4  5  6  7
@@ -839,16 +839,16 @@ Su Mo Tu We Th Fr Sa
 29 30
 
 Mon Sep 30 20:30:56 UTC 2019
-Hello there, rajkamal
-[rajkamal@localhost linux-essentials]$ 
+Hello there, anns
+$ 
 
 ```
 
 Rename the file to daily.sh
 
 ```bash
-[rajkamal@localhost linux-essentials]$ mv /home/rajkamal/bin/first-bash-script.sh /home/rajkamal/bin/daily.sh
-[rajkamal@localhost linux-essentials]$ daily.sh 
+$ mv /home/anns/bin/first-bash-script.sh /home/anns/bin/daily.sh
+$ daily.sh 
    September 2019   
 Su Mo Tu We Th Fr Sa
  1  2  3  4  5  6  7
@@ -858,15 +858,15 @@ Su Mo Tu We Th Fr Sa
 29 30
 
 Mon Sep 30 20:32:48 UTC 2019
-Hello there, rajkamal
-[rajkamal@localhost linux-essentials]$ 
+Hello there, anns
+$ 
 
 ```
 
 Add if statements
 
 ```
-[rajkamal@localhost ~]$ cat bin/daily.sh 
+$ cat bin/daily.sh 
 #!/bin/bash
 
 # My first bash script
@@ -893,11 +893,11 @@ fi
 Looping statements
 
 ```bash
-[rajkamal@localhost ~]$ for i in dilip muthu francis; do echo "$i"; done
+$ for i in dilip muthu francis; do echo "$i"; done
 dilip
 muthu
 francis
-[rajkamal@localhost ~]$ for i in {1..10}; do echo "$i"; done
+$ for i in {1..10}; do echo "$i"; done
 1
 2
 3
@@ -908,7 +908,7 @@ francis
 8
 9
 10
-[rajkamal@localhost ~]$ 
+$ 
 
 ```
 
@@ -977,15 +977,15 @@ To check memory utilization, use free command
 </pre>
 
 ```
-[rajkamal@localhost rtm-devspace-documentation]$ free
+$ free
               total        used        free      shared  buff/cache   available
 Mem:        5944700     2152484     1780100      165280     2012116     3331136
 Swap:       2097148           0     2097148
-[rajkamal@localhost rtm-devspace-documentation]$ free -m
+$ free -m
               total        used        free      shared  buff/cache   available
 Mem:           5805        2102        1737         161        1964        3252
 Swap:          2047           0        2047
-[rajkamal@localhost rtm-devspace-documentation]$ free -g
+$ free -g
               total        used        free      shared  buff/cache   available
 Mem:              5           2           1           0           1           3
 Swap:             1           0           1
@@ -997,7 +997,7 @@ Swap:             1           0           1
 BIOS Chipset - Chip that contains firmware twhich process events such as keyboard strokes and so on.
 
 ```
-[rajkamal@localhost rtm-devspace-documentation]$ sudo dmidecode
+$ sudo dmidecode
 
 ```
 
@@ -1013,11 +1013,11 @@ Persistent information. Magnetic disk or Solid state drives
 Partitioning such fdisk would provide logical partition.
 
 ```
-[rajkamal@localhost rtm-devspace-documentation]$ fdisk -l
+$ fdisk -l
 fdisk: cannot open /dev/sda: Permission denied
 fdisk: cannot open /dev/mapper/centos-root: Permission denied
 fdisk: cannot open /dev/mapper/centos-swap: Permission denied
-[rajkamal@localhost rtm-devspace-documentation]$ sudo fdisk -l
+$ sudo fdisk -l
 
 Disk /dev/sda: 21.5 GB, 21474836480 bytes, 41943040 sectors
 Units = sectors of 1 * 512 = 512 bytes
@@ -1045,7 +1045,7 @@ I/O size (minimum/optimal): 512 bytes / 512 bytes
 To view all block information on harddrives, use ```lsblk``` command
 
 ```
-[rajkamal@localhost rtm-devspace-documentation]$ lsblk
+$ lsblk
 NAME            MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
 sda               8:0    0   20G  0 disk 
 ├─sda1            8:1    0    1G  0 part /boot
@@ -1058,7 +1058,7 @@ sr0              11:0    1 1024M  0 rom
 
 To view free disk space on a harddrive, use ```df``` command
 ```
-[rajkamal@localhost rtm-devspace-documentation]$ df
+$ df
 Filesystem              1K-blocks    Used Available Use% Mounted on
 devtmpfs                  2955508       0   2955508   0% /dev
 tmpfs                     2972348   79560   2892788   3% /dev/shm
@@ -1068,7 +1068,7 @@ tmpfs                     2972348       0   2972348   0% /sys/fs/cgroup
 /dev/sda1                 1038336  242504    795832  24% /boot
 tmpfs                      594472       8    594464   1% /run/user/42
 tmpfs                      594472      56    594416   1% /run/user/1000
-[rajkamal@localhost rtm-devspace-documentation]$ df -h
+$ df -h
 Filesystem               Size  Used Avail Use% Mounted on
 devtmpfs                 2.9G     0  2.9G   0% /dev
 tmpfs                    2.9G   69M  2.8G   3% /dev/shm
@@ -1078,7 +1078,7 @@ tmpfs                    2.9G     0  2.9G   0% /sys/fs/cgroup
 /dev/sda1               1014M  237M  778M  24% /boot
 tmpfs                    581M  8.0K  581M   1% /run/user/42
 tmpfs                    581M   56K  581M   1% /run/user/1000
-[rajkamal@localhost rtm-devspace-documentation]$ 
+$ 
 
 ```
 
@@ -1099,8 +1099,8 @@ top
 Linux log files are stored in /var/log directory.
 
 ```
-[rajkamal@localhost log]$ cd /var/log/
-[rajkamal@localhost log]$ ls
+$ cd /var/log/
+$ ls
 anaconda           boot.log-20190930  cups       gdm                 httpd    messages  qemu-ga  secure             swtpm                vboxadd-setup.log    vboxadd-setup.log.4    Xorg.0.log
 audit              btmp               dmesg      glusterfs           lastlog  ntpstats  rhsm     speech-dispatcher  tallylog             vboxadd-setup.log.1  vboxadd-uninstall.log  Xorg.0.log.old
 boot.log           chrony             dmesg.old  grubby              libvirt  pluto     sa       spooler            tuned                vboxadd-setup.log.2  wpa_supplicant.log     Xorg.9.log
@@ -1115,27 +1115,27 @@ TO View, command dmesg
 
 
 ```
-[rajkamal@localhost log]$ dmsg | less
-[rajkamal@localhost log]$ dmesg | grep console
+$ dmsg | less
+$ dmesg | grep console
 [    0.000000] console [tty0] enabled
-[rajkamal@localhost log]$ 
+$ 
 
 ```
 
 ## Linux networking
 
 ```
-[rajkamal@localhost log]$ ip addr show
-[rajkamal@localhost log]$ ifconfig
-[rajkamal@localhost log]$ ip route show   # Gateway IP address
-[rajkamal@localhost log]$ route
-[rajkamal@localhost log]$ netstat -r
-[rajkamal@localhost log]$ cat /etc/resolv.conf
+$ ip addr show
+$ ifconfig
+$ ip route show   # Gateway IP address
+$ route
+$ netstat -r
+$ cat /etc/resolv.conf
 # Generated by NetworkManager
 search ********
 nameserver *.*.*.*
 nameserver *.*.*.*
-[rajkamal@localhost log]$ host google.com
+$ host google.com
 google.com has address 172.217.5.206
 google.com has IPv6 address 2607:f8b0:4007:802::200e
 google.com mail is handled by 20 alt1.aspmx.l.google.com.
@@ -1143,7 +1143,7 @@ google.com mail is handled by 50 alt4.aspmx.l.google.com.
 google.com mail is handled by 40 alt3.aspmx.l.google.com.
 google.com mail is handled by 30 alt2.aspmx.l.google.com.
 google.com mail is handled by 10 aspmx.l.google.com.
-[rajkamal@localhost log]$ host linuxacademy.com
+$ host linuxacademy.com
 linuxacademy.com has address 13.33.231.39
 linuxacademy.com has address 13.33.231.53
 linuxacademy.com has address 13.33.231.83
@@ -1153,7 +1153,7 @@ linuxacademy.com mail is handled by 20 alt1.aspmx.l.google.com.
 linuxacademy.com mail is handled by 20 alt2.aspmx.l.google.com.
 linuxacademy.com mail is handled by 30 aspmx2.googlemail.com.
 linuxacademy.com mail is handled by 30 aspmx3.googlemail.com.
-[rajkamal@localhost log]$ ping linuxacademy.com
+$ ping linuxacademy.com
 PING linuxacademy.com (13.33.231.53) 56(84) bytes of data.
 64 bytes from server-13-33-231-53.lax3.r.cloudfront.net (13.33.231.53): icmp_seq=1 ttl=238 time=8.88 ms
 64 bytes from server-13-33-231-53.lax3.r.cloudfront.net (13.33.231.53): icmp_seq=2 ttl=238 time=9.29 ms
@@ -1172,7 +1172,7 @@ PING linuxacademy.com (13.33.231.53) 56(84) bytes of data.
 --- linuxacademy.com ping statistics ---
 14 packets transmitted, 14 received, 0% packet loss, time 13037ms
 rtt min/avg/max/mdev = 8.477/9.464/11.971/0.916 ms
-[rajkamal@localhost log]$ ping -c 3 linuxacademy.com
+$ ping -c 3 linuxacademy.com
 PING linuxacademy.com (13.33.231.83) 56(84) bytes of data.
 64 bytes from server-13-33-231-83.lax3.r.cloudfront.net (13.33.231.83): icmp_seq=1 ttl=238 time=7.94 ms
 64 bytes from server-13-33-231-83.lax3.r.cloudfront.net (13.33.231.83): icmp_seq=2 ttl=238 time=8.03 ms
@@ -1181,8 +1181,8 @@ PING linuxacademy.com (13.33.231.83) 56(84) bytes of data.
 --- linuxacademy.com ping statistics ---
 3 packets transmitted, 3 received, 0% packet loss, time 2002ms
 rtt min/avg/max/mdev = 7.404/7.795/8.039/0.279 ms
-[rajkamal@localhost log]$ 
-[rajkamal@localhost log]$ cat /etc/hosts
+$ 
+$ cat /etc/hosts
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
@@ -1197,7 +1197,7 @@ id
 
 w
 
-id rajkamal
+id anns
 # uid = userid
 # gid = user group
 # groups = 1000
@@ -1218,24 +1218,24 @@ sudo vi /etc/group
 + System user = responsible for running backend services and deamons
 
 ```
-[rajkamal@localhost rtm-devspace-documentation]$ who
-rajkamal :0           2019-09-29 22:18 (:0)
-rajkamal pts/0        2019-09-30 11:21 (:0)
-rajkamal pts/1        2019-09-30 11:31 (:0)
-[rajkamal@localhost rtm-devspace-documentation]$ id
-uid=1000(rajkamal) gid=1000(rajkamal) groups=1000(rajkamal),10(wheel) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
-[rajkamal@localhost rtm-devspace-documentation]$ w
+$ who
+anns :0           2019-09-29 22:18 (:0)
+anns pts/0        2019-09-30 11:21 (:0)
+anns pts/1        2019-09-30 11:31 (:0)
+$ id
+uid=1000(anns) gid=1000(anns) groups=1000(anns),10(wheel) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+$ w
  17:23:40 up  8:01,  3 users,  load average: 0.00, 0.01, 0.05
 USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-rajkamal :0       :0               Sun22   ?xdm?  45:45   0.35s /usr/libexec/gnome-session-binary --session gnome-classic
-rajkamal pts/0    :0               11:21    3:00m  2.25s  2.25s bash
-rajkamal pts/1    :0               11:31    4.00s  1.26s  0.03s w
-[rajkamal@localhost rtm-devspace-documentation]$ id rajkamal
-uid=1000(rajkamal) gid=1000(rajkamal) groups=1000(rajkamal),10(wheel)
-[rajkamal@localhost rtm-devspace-documentation]$ 
+anns :0       :0               Sun22   ?xdm?  45:45   0.35s /usr/libexec/gnome-session-binary --session gnome-classic
+anns pts/0    :0               11:21    3:00m  2.25s  2.25s bash
+anns pts/1    :0               11:31    4.00s  1.26s  0.03s w
+$ id anns
+uid=1000(anns) gid=1000(anns) groups=1000(anns),10(wheel)
+$ 
 
 
-[rajkamal@localhost rtm-devspace-documentation]$ sudo cat /etc/sudoers
+$ sudo cat /etc/sudoers
 ******
 
 ## Same thing without a password
@@ -1243,8 +1243,8 @@ uid=1000(rajkamal) gid=1000(rajkamal) groups=1000(rajkamal),10(wheel)
 
 ***
 
-[rajkamal@localhost linux-essentials]$ sudo vi /etc/passwd
-# rajkamal:x:1000:1000:rajkamal:/home/rajkamal:/bin/bash
+$ sudo vi /etc/passwd
+# anns:x:1000:1000:anns:/home/anns:/bin/bash
 # First field = user
 # Second field = encrpted password
 # Third field = user id
@@ -1253,15 +1253,15 @@ uid=1000(rajkamal) gid=1000(rajkamal) groups=1000(rajkamal),10(wheel)
 # Sixth field = home directory path
 # Seventh field = Default login shell
 # Eg.
-rajkamal:x:1000:1000:rajkamal:/home/rajkamal:/bin/bash
+anns:x:1000:1000:anns:/home/anns:/bin/bash
 
-[rajkamal@localhost linux-essentials]$ sudo vi /etc/group
+$ sudo vi /etc/group
 # First field = name of the group
 # Second field = inidicative for the password of the group. Mostly, there wouldn't be any
 # Third field = Id of the group
 # Fourth field = Members of the group
 # Eg.
-wheel:x:10:rajkamal
+wheel:x:10:anns
 
 
 ```
@@ -1287,44 +1287,44 @@ sudo userdel -r muthu
 
 
 ```
-rajkamal@localhost linux-essentials]$ sudo groupadd curators
-rajkamal@localhost linux-essentials]$ sudo vi /etc/group
+$ sudo groupadd curators
+$ sudo vi /etc/group
 # curators:x:1001:
 # First field = name of the group
 # Second field = password (NA)
 # Third field = Group id
 
-[rajkamal@localhost linux-essentials]$ sudo useradd -G 1001 -m -c "Dilip Kumar" dilip
-[rajkamal@localhost linux-essentials]$ sudo vi /etc/passwd
+$ sudo useradd -G 1001 -m -c "Dilip Kumar" dilip
+$ sudo vi /etc/passwd
 # dilip:x:1002:1003:Dilip Kumar:/home/dilip:/bin/bash
-[rajkamal@localhost linux-essentials]$ sudo vi /etc/passwd
-[rajkamal@localhost linux-essentials]$ sudo useradd -G 1001 -m -c "Muthu Raj" muthu
-[rajkamal@localhost linux-essentials]$ sudo vi /etc/passwd
-[rajkamal@localhost linux-essentials]$ id dilip
+$ sudo vi /etc/passwd
+$ sudo useradd -G 1001 -m -c "Muthu Raj" muthu
+$ sudo vi /etc/passwd
+$ id dilip
 uid=1002(dilip) gid=1003(dilip) groups=1003(dilip),1001(curators)
-[rajkamal@localhost linux-essentials]$ id muthu
+$ id muthu
 uid=1003(muthu) gid=1004(muthu) groups=1004(muthu),1001(curators)
-[rajkamal@localhost linux-essentials]$ id dilp
+$ id dilp
 uid=1001(dilp) gid=1002(dilp) groups=1002(dilp),1001(curators)
-[rajkamal@localhost linux-essentials]$ 
-[rajkamal@localhost home]$ ls
-dilip  dilp  muthu  rajkamal
-[rajkamal@localhost home]$ ls -a /etc/skel  # Default boiler plate folders for any user created in the system
+$ 
+$ ls
+dilip  dilp  muthu  anns
+$ ls -a /etc/skel  # Default boiler plate folders for any user created in the system
 .  ..  .bash_logout  .bash_profile  .bashrc  .mozilla
 
-[rajkamal@localhost home]$ passwd muthu
+$ passwd muthu
 passwd: Only root can specify a user name.
-[rajkamal@localhost home]$ sudo passwd muthu
+$ sudo passwd muthu
 Changing password for user muthu.
 New password: 
 Retype new password: 
 passwd: all authentication tokens updated successfully.
-[rajkamal@localhost home]$ sudo passwd dilip
+$ sudo passwd dilip
 Changing password for user dilip.
 New password: 
 Retype new password: 
 passwd: all authentication tokens updated successfully.
-[rajkamal@localhost home]$ sudo vi /etc/shadow
+$ sudo vi /etc/shadow
 
 dilip:********.:18170:0:99999:7:::
 muthu:********:18170:0:99999:7:::
@@ -1337,9 +1337,9 @@ muthu:********:18170:0:99999:7:::
 # Sixth field = Password warning days
 
 
-[rajkamal@localhost home]$ sudo userdel -r muthu
-[rajkamal@localhost home]$ sudo userdel -r dilp
-[rajkamal@localhost home]$ sudo userdel -r dilip
+$ sudo userdel -r muthu
+$ sudo userdel -r dilp
+$ sudo userdel -r dilip
 
 
 ```
@@ -1357,29 +1357,29 @@ Learning Objectives
 </pre>
 
 ```
-[rajkamal@localhost home]$ sudo useradd -c "Mary Phillips" -m -s "/bin/bash" mphillips
-[sudo] password for rajkamal: 
-[rajkamal@localhost home]$ vi /etc/passwd
-[rajkamal@localhost home]$ sudo passwd mphillips
+$ sudo useradd -c "Mary Phillips" -m -s "/bin/bash" mphillips
+[sudo] password for anns: 
+$ vi /etc/passwd
+$ sudo passwd mphillips
 Changing password for user mphillips.
 New password: 
 Retype new password: 
 passwd: all authentication tokens updated successfully.
-[rajkamal@localhost home]$ sudo useradd richard
-[rajkamal@localhost home]$ vi /etc/passwd
-[rajkamal@localhost home]$ sudo passwd richard
+$ sudo useradd richard
+$ vi /etc/passwd
+$ sudo passwd richard
 Changing password for user richard.
 New password: 
 Retype new password: 
 passwd: all authentication tokens updated successfully.
-[rajkamal@localhost home]$ sudo usermod -c "Richard Layton" richard
-[rajkamal@localhost home]$ vi /etc/passwd
-[rajkamal@localhost home]$ sudo groupadd accounting
-[rajkamal@localhost home]$ vi /etc/group
-[rajkamal@localhost home]$ sudo usermod -G accounting richard
-[rajkamal@localhost home]$ id richard
+$ sudo usermod -c "Richard Layton" richard
+$ vi /etc/passwd
+$ sudo groupadd accounting
+$ vi /etc/group
+$ sudo usermod -G accounting richard
+$ id richard
 uid=1002(richard) gid=1003(richard) groups=1003(richard),1004(accounting)
-[rajkamal@localhost home]$ 
+$ 
 ```
 
 
@@ -1424,113 +1424,113 @@ sudo chown muthu file7.json
 
 
 ```
-[rajkamal@localhost Documents]$ ls -l
+$ ls -l
 total 0
-drwxrwxr-x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
+drwxrwxr-x. 2 anns anns 6 Sep 30 19:09 archive
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:44 file1.txt
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:44 file2.txt
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:45 file3.pdf
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:45 file4.doc
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:45 file5.xls
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:45 file6.xml
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:45 file7.json
 
 
-[rajkamal@localhost Documents]$ chmod o-r file7.json
-[rajkamal@localhost Documents]$ ls -l
+$ chmod o-r file7.json
+$ ls -l
 total 0
-drwxrwxr-x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
--rw-rw-r--. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
+drwxrwxr-x. 2 anns anns 6 Sep 30 19:09 archive
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:44 file1.txt
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:44 file2.txt
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:45 file3.pdf
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:45 file4.doc
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:45 file5.xls
+-rw-rw-r--. 1 anns anns 0 Sep 28 16:45 file6.xml
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file7.json
 
 
-[rajkamal@localhost ~]$ chmod -R o-r Documents/*
-[rajkamal@localhost ~]$ cd Documents/
-[rajkamal@localhost Documents]$ ls -l
+$ chmod -R o-r Documents/*
+$ cd Documents/
+$ ls -l
 total 0
-drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
-[rajkamal@localhost Documents]$ 
+drwxrwx--x. 2 anns anns 6 Sep 30 19:09 archive
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file6.xml
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file7.json
+$ 
 
 
-[rajkamal@localhost Documents]$ chmod 600 file7.json 
-[rajkamal@localhost Documents]$ ls -l
+$ chmod 600 file7.json 
+$ ls -l
 total 0
-drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
--rw-------. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
-[rajkamal@localhost Documents]$ 
+drwxrwx--x. 2 anns anns 6 Sep 30 19:09 archive
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file6.xml
+-rw-------. 1 anns anns 0 Sep 28 16:45 file7.json
+$ 
 
 
-[rajkamal@localhost Documents]$ sudo chown :curators file7.json 
-[sudo] password for rajkamal: 
-[rajkamal@localhost Documents]$ ls -l
+$ sudo chown :curators file7.json 
+[sudo] password for anns: 
+$ ls -l
 total 0
-drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
--rw-------. 1 rajkamal curators 0 Sep 28 16:45 file7.json
+drwxrwx--x. 2 anns anns 6 Sep 30 19:09 archive
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file6.xml
+-rw-------. 1 anns curators 0 Sep 28 16:45 file7.json
 
 
-[rajkamal@localhost Documents]$ sudo chown muthu file7.json
-[rajkamal@localhost Documents]$ ls -l
+$ sudo chown muthu file7.json
+$ ls -l
 total 0
-drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
+drwxrwx--x. 2 anns anns 6 Sep 30 19:09 archive
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file6.xml
 -rw-------. 1 muthu    curators 0 Sep 28 16:45 file7.json
-[rajkamal@localhost Documents]$ 
+$ 
 
-[rajkamal@localhost Documents]$ sudo chgrp curators file6.xml
-[rajkamal@localhost Documents]$ ls -l
+$ sudo chgrp curators file6.xml
+$ ls -l
 total 0
-drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
--rw-rw----. 1 rajkamal curators 0 Sep 28 16:45 file6.xml
+drwxrwx--x. 2 anns anns 6 Sep 30 19:09 archive
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 anns curators 0 Sep 28 16:45 file6.xml
 -rw-------. 1 muthu    curators 0 Sep 28 16:45 file7.json
 
 
-[rajkamal@localhost Documents]$ sudo chown rajkamal:rajkamal file6.xml 
-[rajkamal@localhost Documents]$ sudo chown rajkamal:rajkamal file7.json 
-[rajkamal@localhost Documents]$ ls -l
+$ sudo chown anns:anns file6.xml 
+$ sudo chown anns:anns file7.json 
+$ ls -l
 total 0
-drwxrwx--x. 2 rajkamal rajkamal 6 Sep 30 19:09 archive
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file1.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:44 file2.txt
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file3.pdf
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file4.doc
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file5.xls
--rw-rw----. 1 rajkamal rajkamal 0 Sep 28 16:45 file6.xml
--rw-------. 1 rajkamal rajkamal 0 Sep 28 16:45 file7.json
-[rajkamal@localhost Documents]$ 
+drwxrwx--x. 2 anns anns 6 Sep 30 19:09 archive
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file1.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:44 file2.txt
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file3.pdf
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file4.doc
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file5.xls
+-rw-rw----. 1 anns anns 0 Sep 28 16:45 file6.xml
+-rw-------. 1 anns anns 0 Sep 28 16:45 file7.json
+$ 
 
 ```
 
@@ -1544,24 +1544,24 @@ ln -s Documents/file1.txt file1.txt.ln
 
 
 ```
-[rajkamal@localhost ~]$ ln -s Documents/file1.txt file1.txt.ln
-[rajkamal@localhost ~]$ ls -l
+$ ln -s Documents/file1.txt file1.txt.ln
+$ ls -l
 total 4
-drwxrwxr-x. 2 rajkamal rajkamal   44 Sep 30 13:55 bin
-drwxrwxr-x. 5 rajkamal rajkamal   79 Sep 28 17:43 compression
-drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Desktop
-drwxrwxr-x. 5 rajkamal rajkamal   72 Sep 30 11:22 development
-drwxr-xr-x. 3 rajkamal rajkamal  141 Sep 30 19:09 Documents
-drwxr-xr-x. 2 rajkamal rajkamal   88 Sep 30 14:30 Downloads
-lrwxrwxrwx. 1 rajkamal rajkamal   19 Sep 30 23:16 file1.txt.ln -> Documents/file1.txt
--rw-rw-r--. 1 rajkamal rajkamal    0 Sep 26 11:04 help.txt
-drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Music
-drwxrwxr-x. 4 rajkamal rajkamal   29 Sep 27 10:36 node_modules
-drwxr-xr-x. 3 rajkamal rajkamal 4096 Sep 30 13:59 Pictures
-drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Public
-drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Templates
-drwxr-xr-x. 2 rajkamal rajkamal    6 Sep 25 17:33 Videos
-[rajkamal@localhost ~]$ 
+drwxrwxr-x. 2 anns anns   44 Sep 30 13:55 bin
+drwxrwxr-x. 5 anns anns   79 Sep 28 17:43 compression
+drwxr-xr-x. 2 anns anns    6 Sep 25 17:33 Desktop
+drwxrwxr-x. 5 anns anns   72 Sep 30 11:22 development
+drwxr-xr-x. 3 anns anns  141 Sep 30 19:09 Documents
+drwxr-xr-x. 2 anns anns   88 Sep 30 14:30 Downloads
+lrwxrwxrwx. 1 anns anns   19 Sep 30 23:16 file1.txt.ln -> Documents/file1.txt
+-rw-rw-r--. 1 anns anns    0 Sep 26 11:04 help.txt
+drwxr-xr-x. 2 anns anns    6 Sep 25 17:33 Music
+drwxrwxr-x. 4 anns anns   29 Sep 27 10:36 node_modules
+drwxr-xr-x. 3 anns anns 4096 Sep 30 13:59 Pictures
+drwxr-xr-x. 2 anns anns    6 Sep 25 17:33 Public
+drwxr-xr-x. 2 anns anns    6 Sep 25 17:33 Templates
+drwxr-xr-x. 2 anns anns    6 Sep 25 17:33 Videos
+$ 
 
 ```
 
@@ -1588,22 +1588,22 @@ sudo chmod 1777 /tmp   # Octal
 
 
 ```
-[rajkamal@localhost ~]$ ls -l /var/tmp/
-[rajkamal@localhost ~]$ ls -l /tmp/
-[rajkamal@localhost ~]$ 
+$ ls -l /var/tmp/
+$ ls -l /tmp/
+$ 
 
 
 [muthu@localhost ~]$ ls -ld /tmp
 drwxrwxrwt. 42 root root 4096 Sep 30 23:33 /tmp
 [muthu@localhost ~]$ 
 
-[rajkamal@localhost ~]$ sudo chmod o-t /tmp
-[sudo] password for rajkamal: 
-[rajkamal@localhost ~]$ ls -ld /tmp
+$ sudo chmod o-t /tmp
+[sudo] password for anns: 
+$ ls -ld /tmp
 drwxrwxrwx. 42 root root 4096 Sep 30 23:35 /tmp
 
-[rajkamal@localhost ~]$ sudo chmod 1777 /tmp 
-[rajkamal@localhost ~]$ ls -ld /tmp
+$ sudo chmod 1777 /tmp 
+$ ls -ld /tmp
 drwxrwxrwt. 42 root root 4096 Sep 30 23:37 /tmp
 
 
